@@ -1,17 +1,16 @@
 <template>
   <div class=" bg-blue-400">
-    {{ this.hello }}
+    {{ props.hello }}
   </div>
 </template>
-<script lang="ts">
-export default {
-  props: {
+<script setup lang="ts">
+
+  const props = defineProps({
     hello: {
       type: String,
-      default: ''
+      required: true
     }
-  }
-}
+  });
 </script>
 <style lang="">
 
