@@ -1,11 +1,11 @@
 <template>
   <div class=" bg-blue-400">
-    {{ props.hello }}
+    {{ hello }}
   </div>
 </template>
 <script setup lang="ts">
 
-  const props = defineProps({
+  defineProps({
     hello: {
       type: String,
       required: true
