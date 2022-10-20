@@ -27,8 +27,8 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 import { createApp } from "vue/dist/vue.esm-bundler.js";
-import AboutView from "../components/about-view.vue";
-import HomeView from "../components/home-view.vue";
+import AboutView from "../views/about-view.vue";
+import HomeView from "../views/home-view.vue";
 import 'virtual:windi.css';
 
 document.addEventListener('DOMContentLoaded', () => {
