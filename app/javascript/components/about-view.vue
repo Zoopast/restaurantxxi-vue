@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class=" bg-blue-400">
     {{ this.hello }}
   </div>
 </template>
