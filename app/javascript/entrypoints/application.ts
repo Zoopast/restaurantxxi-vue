@@ -29,20 +29,21 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import AboutView from "../views/about-view.vue";
 import HomeView from "../views/home-view.vue";
-import AuthStore from '../stores/AuthStore';
+import SessionManager from "../views/SessionManager.vue";
+import { createPinia } from 'pinia';
+import { useAuthStore } from "../stores/AuthStore.ts";
 import 'virtual:windi.css';
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  let store = AuthStore();
   let localAuthToken = localStorage.auth_token;
+  const auth = useAuthStore();
   let cookiesExists = localAuthToken !== 'undefined' && localAuthToken !== null;
   if(cookiesExists)
   {
     const auth_token = localStorage.getItem('auth_token');
     const authTokenExists = auth_token !== 'undefined' && auth_token !== null;
     if(authTokenExists){
-      store.loginUserWithToken({auth_token});
+      auth.loginUserWithToken({auth_token});
     }
   }
 
@@ -50,10 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
     components: {
       AboutView,
       HomeView,
+      SessionManager,
     },
   });
-
-  app.use(store);
+  const pinia = createPinia();
+  app.use(pinia);
   app.mount("#app");
 
   return app;

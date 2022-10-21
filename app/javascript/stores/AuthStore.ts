@@ -3,7 +3,7 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:3000/";
 
-export default defineStore({
+export const useAuthStore = defineStore({
   id: "AuthStore",
   state: () => {
     return {
