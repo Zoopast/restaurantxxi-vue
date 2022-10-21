@@ -29,10 +29,22 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import AboutView from "../views/about-view.vue";
 import HomeView from "../views/home-view.vue";
-import store from './store';
+import AuthStore from '../stores/AuthStore';
 import 'virtual:windi.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  let store = AuthStore();
+  let localAuthToken = localStorage.auth_token;
+  let cookiesExists = localAuthToken !== 'undefined' && localAuthToken !== null;
+  if(cookiesExists)
+  {
+    const auth_token = localStorage.getItem('auth_token');
+    const authTokenExists = auth_token !== 'undefined' && auth_token !== null;
+    if(authTokenExists){
+      store.loginUserWithToken({auth_token});
+    }
+  }
 
   const app = createApp({
     components: {

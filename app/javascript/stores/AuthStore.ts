@@ -25,7 +25,7 @@ export default defineStore({
     getUserID() {
       return this.user?.id;
     },
-    isLoggedIn(state) {
+    isLoggedIn() {
       const loggedOut =
         this.auth_token == null || this.auth_token == JSON.stringify(null);
       return !loggedOut;
