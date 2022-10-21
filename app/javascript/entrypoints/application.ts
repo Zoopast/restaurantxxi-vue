@@ -29,6 +29,7 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import AboutView from "../views/about-view.vue";
 import HomeView from "../views/home-view.vue";
+import store from './store';
 import 'virtual:windi.css';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
 
+  app.use(store);
   app.mount("#app");
 
   return app;
