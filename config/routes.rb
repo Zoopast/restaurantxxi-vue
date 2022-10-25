@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users,
-    controllers: {
-      registrations: 'users/registrations',
-      sessions: 'users/sessions'
-     }
+  devise_for :users
+  resources :recipes
+    #controllers: {
+    #  registrations: 'users/registrations',
+    #  sessions: 'users/sessions'
+    # }
   root 'home#index'
   get 'about', to: 'about#index'
   get 'member-data', to: 'members#show'

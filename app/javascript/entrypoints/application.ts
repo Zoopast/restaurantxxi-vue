@@ -28,7 +28,22 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // import '~/index.css'
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import AboutView from "../views/about-view.vue";
+
+
 import HomeView from "../views/home-view.vue";
+import ExpensesView from "../views/expenses-view.vue";
+import FinancesView from "../views/finances-view.vue";
+import InventoryView from "../views/inventory-view.vue";
+import ItemsView from "../views/items-view.vue";
+import KitchensView from "../views/kitchens-view.vue";
+import OrdersView from "../views/orders-view.vue";
+import ProductsView from "../views/products-view.vue";
+import RecipesView from "../views/recipes-view.vue";
+import ReservationsView from "../views/reservations-view.vue";
+import TablesView from "../views/tables-view.vue";
+import TransactionsView from "../views/transactions-view.vue";
+import UserView from "../views/user-view.vue";
+
 import SessionManager from "../views/SessionManager.vue";
 import { createPinia } from 'pinia';
 import 'virtual:windi.css';
@@ -51,6 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
     components: {
       AboutView,
       HomeView,
+      ExpensesView,
+      FinancesView,
+      InventoryView,
+      ItemsView,
+      KitchensView,
+      OrdersView,
+      ProductsView,
+      RecipesView,
+      ReservationsView,
+      TablesView,
+      TransactionsView,
+      UserView,
       SessionManager,
     },
   });
