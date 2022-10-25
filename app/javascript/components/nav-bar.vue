@@ -2,6 +2,12 @@
   <div class=" h-12 flex flex-row items-center justify-between text-gray-500 bg-gray-100 hover:text-gray-700 focus:text-gray-700">
     <a href="/">RestaurantXXI</a>
   </div>
+  <div>
+
+  </div>
+  <div>
+
+  </div>
 </template>
 <script setup lang="ts">
 

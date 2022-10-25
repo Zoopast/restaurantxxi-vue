@@ -47,6 +47,9 @@ import UserView from "../views/user-view.vue";
 import SessionManager from "../views/SessionManager.vue";
 import { createPinia } from 'pinia';
 import 'virtual:windi.css';
+import Locales from '../locales/locales';
+import { createI18n } from 'vue-i18n'
+import messages from '@intlify/vite-plugin-vue-i18n/messages'
 
 document.addEventListener('DOMContentLoaded', () => {
   let localAuthToken = localStorage.auth_token;
@@ -59,6 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
       auth.loginUserWithToken({auth_token});
     }
   }
+  const i18n = createI18n({
+    legacy: false,
+    locale: 'es',
+    fallbackLocale: 'es',
+    messages: Locales.messages,
+  });
 
   const pinia = createPinia();
 
@@ -83,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
   });
   app.use(pinia);
+  app.use(i18n);
   app.mount("#app");
 
   return app;

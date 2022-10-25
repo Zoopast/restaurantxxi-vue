@@ -1,12 +1,12 @@
 <template lang="">
-  <div>
-
+  <div class="bg-red-200">
+    {{$t('recipes.title')}}
   </div>
 </template>
-<script>
-export default {
+<script setup lang="ts">
+  import { useI18n } from 'vue-i18n';
 
-}
+  const { t } = useI18n({});
 </script>
 <style lang="">
 
