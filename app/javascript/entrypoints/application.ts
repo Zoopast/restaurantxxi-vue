@@ -28,7 +28,7 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // import '~/index.css'
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import AboutView from "../views/about-view.vue";
-
+import NavBar from "../components/nav-bar.vue";
 
 import HomeView from "../views/home-view.vue";
 import ExpensesView from "../views/expenses-view.vue";
@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const app = createApp({
     components: {
+      NavBar,
       AboutView,
       HomeView,
       ExpensesView,
