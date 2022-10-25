@@ -22,6 +22,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/linux-loong64/-/linux-loong64-0.15.12.tgz#475b33a2631a3d8ca8aa95ee127f9a61d95bf9c1"
   integrity sha512-tZEowDjvU7O7I04GYvWQOS4yyP9E/7YlsB0jjw1Ycukgr2ycEzKyIk5tms5WnLBymaewc6VmRKnn5IJWgK4eFw==
 
+"@headlessui/vue@^1.7.3":
+  version "1.7.3"
+  resolved "https://registry.yarnpkg.com/@headlessui/vue/-/vue-1.7.3.tgz#116d13391552436ea1e9e88c69f0e9d7d2585c45"
+  integrity sha512-Is4iakKts9u9E0+jEZNzoJpBjwq2SamwEIoEl2RlyYSu6Zco536GsPXaQEfg/o7Eyc1GUUlcL+dJd4Rt7qyf7A==
+
 "@intlify/bundle-utils@^3.2.1":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@intlify/bundle-utils/-/bundle-utils-3.2.1.tgz#f1a00fb31716567c8da63fbb351c3199ca12d467"

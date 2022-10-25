@@ -3,7 +3,10 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "baseUrl": "app/javascript/",
-    "types": ["@types/node", "@types/jest", "@intlify/vite-plugin-vue-i18n/client"]
+    "types": ["@types/node",
+              "@types/jest",
+              "@intlify/vite-plugin-vue-i18n/client",
+              "@headlessui/vue"]
   },
   "include": [
     "app/javascript/**/*.ts",
