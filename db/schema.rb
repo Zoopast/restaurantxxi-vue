@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_25_012034) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_25_154100) do
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.float "qty"
@@ -33,7 +33,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_012034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "inventory_id", null: false
+    t.integer "kitchen_id"
     t.index ["inventory_id"], name: "index_items_on_inventory_id"
+    t.index ["kitchen_id"], name: "index_items_on_kitchen_id"
   end
 
   create_table "jwt_denylist", force: :cascade do |t|
@@ -42,6 +44,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_012034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
+  end
+
+  create_table "kitchens", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "menus", force: :cascade do |t|
@@ -58,6 +65,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_25_012034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "menu_id", null: false
+    t.integer "kitchen_id"
+    t.index ["kitchen_id"], name: "index_recipes_on_kitchen_id"
     t.index ["menu_id"], name: "index_recipes_on_menu_id"
   end
 

@@ -11,7 +11,7 @@
     <div class="">
       <a href="/" class="p-2 nav-item">{{t('inventory.title')}}</a>
       <a href="/" class="p-2 nav-item">{{t('menu.title')}}</a>
-      <a href="/" class="p-2 nav-item">{{t('recipes.title')}}</a>
+      <a href="/recipes" class="p-2 nav-item">{{t('recipes.title')}}</a>
       <a href="/" class="p-2 nav-item">{{t('tables.title')}}</a>
       <a href="/" class="p-2 nav-item">{{t('clients.title')}}</a>
       <a href="/" class="p-2 nav-item">{{t('reservations.title')}}</a>

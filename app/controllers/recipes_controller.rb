@@ -5,12 +5,8 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all
   end
 
-  def show
-  end
-
   def new
     @recipe = Recipe.new
-    @menus = Menu.all
   end
 
   def create
@@ -22,9 +18,16 @@ class RecipesController < ApplicationController
     end
   end
 
-
   private
+
   def set_recipe
     @recipe = Recipe.find(params[:id])
+  end
+
+  def recipe_params
+
+    binding.pry
+
+    params.require(:recipe).permit(:name)
   end
 end

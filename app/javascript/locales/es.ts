@@ -18,6 +18,10 @@ export default {
   },
   recipes: {
     title: "Recetas",
+    new: {
+      title: "Nueva receta",
+      name: "Nombre de la receta",
+    }
   },
   tables: {
     title: "Mesas",
@@ -35,5 +39,8 @@ export default {
     back: 'Atrás',
     continue: 'Continuar',
     selectOption: 'Seleccionar opción',
+  },
+  kitchens:{
+    title: 'Cocinas',
   },
 }

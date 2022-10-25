@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import { ref, reactive } from 'vue';
   import { useI18n } from 'vue-i18n';
   import {
     Dialog,
@@ -6,15 +7,39 @@
     DialogTitle,
     DialogDescription,
   } from '@headlessui/vue'
-  import { ref } from 'vue'
 
-  const isOpen = ref(true)
+  const recipe = reactive({
+    name: '',
+    description: '',
+    kitchen_id: 1,
+    menu_id: 1
+  });
+
+  const props = defineProps({
+    menus: {
+      type: Array,
+      default: () => []
+    },
+    kitchens: {
+      type: Array,
+      default: () => []
+    },
+  })
+
+  const submited = ref(false);
+  const submitHandler = async () => {
+    await new Promise((r) => setTimeout(r, 1000));
+    submited.value = true;
+  }
+
+  const isOpen = ref(false)
 
   function setIsOpen(value : boolean) {
     isOpen.value = value
   }
 
   const { t } = useI18n({});
+
 </script>
 <template lang="">
   <div class="bg-red-200">
@@ -27,12 +52,52 @@
     <div class="fixed inset-0 flex items-center justify-center p-4">
       <!-- The actual dialog panel -->
       <DialogPanel class="w-full max-w-sm rounded bg-white">
-        <DialogTitle>Complete your order</DialogTitle>
+        <DialogTitle>{{$t('recipes.new.title')}}</DialogTitle>
 
-        <!-- ... -->
+
+        <FormKit
+          type="form"
+          id="recipes"
+          :form-class="submited ? 'hide' : 'show'"
+          submit-label="Agregar"
+          action="/recipes"
+          method="post"
+        >
+        <FormKit
+          type="group"
+          name="recipe"
+          :form-class="submited ? 'hide' : 'show'"
+          action="/recipes"
+          method="post"
+          :value="{
+            name: '',
+            description: '',
+            kitchen_id: 1,
+            menu_id: 1
+          }"
+        >
+          <FormKit
+            type="text"
+            name="name"
+            :label="$t('recipes.new.name')"
+          />
+          <FormKit
+            type="select"
+            name="menu_id"
+            :label="$t('menu.title')"
+            :options="props.menus"
+            />
+          <FormKit
+            type="select"
+            name="kitchen_id"
+            :label="$t('kitchens.title')"
+            :options="props.kitchens"
+            />
+        </FormKit>
+      </FormKit>
       </DialogPanel>
     </div>
   </Dialog>
-  <button @click="setIsOpen(true)">Open Dialog</button>
+  <button @click="setIsOpen(true)">{{$t('recipes.new.title')}}</button>
   </div>
 </template>
