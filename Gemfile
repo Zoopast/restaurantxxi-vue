@@ -79,3 +79,7 @@ gem "devise", "~> 4.8"
 
 gem "devise-jwt", "~> 0.10.0"
 gem "rack-cors", "~> 1.1"
+
+gem "pry", "~> 0.14.1"
+
+gem "pry-byebug", "~> 3.10"
