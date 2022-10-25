@@ -49,7 +49,7 @@
         </div>
     </div>
 </template>
-<script lang="ts">
+<script setup lang="ts">
   import { storeToRefs } from 'pinia'
   import { useAuthStore } from "../stores/AuthStore";
   import { reactive } from "vue";

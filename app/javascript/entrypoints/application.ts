@@ -31,12 +31,10 @@ import AboutView from "../views/about-view.vue";
 import HomeView from "../views/home-view.vue";
 import SessionManager from "../views/SessionManager.vue";
 import { createPinia } from 'pinia';
-import { useAuthStore } from "../stores/AuthStore.ts";
 import 'virtual:windi.css';
 
 document.addEventListener('DOMContentLoaded', () => {
   let localAuthToken = localStorage.auth_token;
-  const auth = useAuthStore();
   let cookiesExists = localAuthToken !== 'undefined' && localAuthToken !== null;
   if(cookiesExists)
   {
@@ -47,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  const pinia = createPinia();
+
   const app = createApp({
     components: {
       AboutView,
@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
       SessionManager,
     },
   });
-  const pinia = createPinia();
   app.use(pinia);
   app.mount("#app");
 
