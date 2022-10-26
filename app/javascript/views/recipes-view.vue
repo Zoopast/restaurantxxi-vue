@@ -63,37 +63,23 @@
           action="/recipes"
           method="post"
         >
-        <FormKit
-          type="group"
-          name="recipe"
-          :form-class="submited ? 'hide' : 'show'"
-          action="/recipes"
-          method="post"
-          :value="{
-            name: '',
-            description: '',
-            kitchen_id: 1,
-            menu_id: 1
-          }"
-        >
           <FormKit
             type="text"
-            name="name"
+            name="recipe[name]"
             :label="$t('recipes.new.name')"
           />
           <FormKit
             type="select"
-            name="menu_id"
+            name="recipe[menu_id]"
             :label="$t('menu.title')"
             :options="props.menus"
             />
           <FormKit
             type="select"
-            name="kitchen_id"
+            name="recipe[kitchen_id]"
             :label="$t('kitchens.title')"
             :options="props.kitchens"
             />
-        </FormKit>
       </FormKit>
       </DialogPanel>
     </div>

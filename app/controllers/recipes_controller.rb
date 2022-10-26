@@ -28,6 +28,6 @@ class RecipesController < ApplicationController
 
     binding.pry
 
-    params.require(:recipe).permit(:name)
+    params.require(:recipe).permit(:name, :description, :menu_id, :kitchen_id)
   end
 end
