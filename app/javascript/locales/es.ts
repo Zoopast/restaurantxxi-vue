@@ -21,6 +21,14 @@ export default {
     new: {
       title: "Nueva receta",
       name: "Nombre de la receta",
+      description: "Descripción",
+      preparation: "Preparación",
+      ingredients: {
+        title: "Ingredientes",
+        name: "Nombre",
+        quantity: "Cantidad",
+        unit: "Unidad",
+      },
     }
   },
   tables: {
