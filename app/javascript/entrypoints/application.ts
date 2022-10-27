@@ -49,7 +49,6 @@ import { createPinia } from 'pinia';
 import 'virtual:windi.css';
 import Locales from '../locales/locales';
 import { createI18n } from 'vue-i18n';
-import { plugin, defaultConfig } from '@formkit/vue';
 
 document.addEventListener('DOMContentLoaded', () => {
   let localAuthToken = localStorage.auth_token;
@@ -93,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   app.use(pinia);
   app.use(i18n);
-  app.use(plugin, defaultConfig);
   app.mount("#app");
 
   return app;
