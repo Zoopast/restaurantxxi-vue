@@ -36,6 +36,10 @@
       type: Array,
       default: () => []
     },
+    recipes: {
+      type: Array,
+      default: () => []
+    },
   })
 
   const submited = ref(false);
@@ -54,7 +58,7 @@
 
 </script>
 <template lang="">
-  <div class="bg-red-300">
+  <div class="">
     {{$t('recipes.title')}}
     <Dialog :open="isOpen" @close="setIsOpen" class="relative z-50">
     <!-- The backdrop, rendered as a fixed sibling to the panel container -->
@@ -114,13 +118,13 @@
           <input
             v-if="selectedMenu !== null"
             type="hidden"
-            :value="selectedMenu.id"
+            :value="selectedMenu"
             name="recipe[menu_id]"
           >
           <input
                   v-if="selectedKitchen !== null"
                   type="hidden"
-                  :value="selectedKitchen.id"
+                  :value="selectedKitchen"
                   name="recipe[kitchen_id]"
           >
           <button type="submit">Submit</button>
@@ -129,5 +133,42 @@
     </div>
   </Dialog>
   <button @click="setIsOpen(true)">{{$t('recipes.new.title')}}</button>
+  <div id="recipes" class="min-w-full">
+    <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="overflow-hidden">
+          <table class="min-w-full">
+            <thead class="border-b">
+              <tr>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Nombre
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Descripción
+                </th>
+                <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Acciones
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="recipe, idx in recipes"
+                :key = "idx"
+                class="border-b">
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <span>{{recipe.name}}</span>
+                </td>
+                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <span>{{recipe.description}}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
   </div>
 </template>
