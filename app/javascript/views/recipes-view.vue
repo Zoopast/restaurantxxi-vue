@@ -1,6 +1,9 @@
 <script setup lang="ts">
   import { ref, reactive } from 'vue';
   import { useI18n } from 'vue-i18n';
+  import { Field, Form, ErrorMessage, FieldArray } from 'vee-validate';
+  import TextInput from '../components/TextInput.vue';
+  import csrfInput from '../components/csrf-input.vue';
   import {
     Dialog,
     DialogPanel,
@@ -8,16 +11,20 @@
     DialogDescription,
   } from '@headlessui/vue'
 
-  const ingredients = reactive([
-    {name: '', quantity: '', unit: ''},
-  ])
+  const selectedMenu = ref(null);
+  const selectedKitchen = ref(null);
+
+  const ingredients = ref([
+    {name: 'sadsadsad', quantity: 0, unit: ''},
+  ]);
+
 
   const addRow = () => {
-    ingredients.push({name: '', quantity: '', unit: ''});
+    ingredients.value.push({name: '', quantity: 0, unit: ''});
   }
 
   const removeRow = (index: number) => {
-    ingredients.splice(index, 1);
+    ingredients.value.splice(index, 1);
   }
 
   const props = defineProps({
@@ -59,77 +66,65 @@
       <DialogPanel class="flex flex-col  items-center justify-center max-w-1/2 rounded bg-white">
         <DialogTitle>{{$t('recipes.new.title')}}</DialogTitle>
 
-        <FormKit
-          type="form"
-          id="recipes"
-          :form-class="submited ? 'hide' : 'show'"
-          submit-label="Agregar"
+        <Form
           action="/recipes"
-          method="post"
+          method="POST"
         >
-          <FormKit
-            type="text"
-            name="recipe[name]"
-            input-class="w-full h-10 px-3 text-base text-gray-700 placeholder-gray-400"
-            :label="$t('recipes.new.name')"
-          />
-          <FormKit
-            type="text"
-            input-class="w-full h-10 px-3 text-base text-gray-700 placeholder-gray-400"
-            name="recipe[description]"
-            :label="$t('recipes.new.description')"
-          />
+        <csrfInput />
+        <TextInput
+          name="recipe[name]"
+          type="text"
+          v-bind:label="$t('recipes.new.name')"
+          placeholder="Name"
+        />
 
-          <span class=" font-bold">{{$t('recipes.new.ingredients.title')}}</span>
+        <TextInput
+          name="recipe[description]"
+          type="text"
+          v-bind:label="$t('recipes.new.description')"
+          placeholder="Description"
+        />
 
-          <div v-for="item, index in ingredients" :key="item">
-            <div class="flex flex-row">
-              <FormKit
-              type="text"
-              name="recipe[ingredients][{{index}}][name]"
-              :label="$t('recipes.new.ingredients.name')" />
-              <FormKit
-                type="number"
-                name="recipe[ingredients][{{index}}][quantity]"
-                :label="$t('recipes.new.ingredients.quantity')" />
-              <FormKit
-                type="text"
-                name="recipe[ingredients][{{index}}][unit]"
-                :label="$t('recipes.new.ingredients.unit')" />
+          <fieldset
+            class="InputGroup"
+            v-for="(field, idx) in ingredients"
+            :key="idx"
+          >
+            <legend>Recipe #{{ idx }}</legend>
+            <label :for="`name_${idx}`">Name</label>
+            <Field :id="`name_${idx}`" :name="`ingredients[${idx}].name`"/>
+            <label :for="`quantity_${idx}`">Name</label>
+            <Field :id="`quantity_${idx}`" :name="`ingredients[${idx}].quantity`"/>
+            <label :for="`unit_${idx}`">Name</label>
+            <Field :id="`unit_${idx}`" :name="`ingredients[${idx}].unit`"/>
+            <button type="button" @click="addRow">Add</button>
+            <button type="button" @click="removeRow(idx)">Remove</button>
+          </fieldset>
 
-              <button
-                type="button"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                @click="removeRow(index)"
-              >
-                x
-              </button>
-              <button
-                type="button"
-                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                @click="addRow"
-              > + </button>
-            </div>
-          </div>
-          <FormKit
-            type="textarea"
-            name="recipe[preparation]"
-            rows="10"
-            :label="$t('recipes.new.preparation')"
-          />
-          <FormKit
-            type="select"
+          <label for="menu_id">Menú</label>
+          <Field name="menu" as="select" v-model="selectedMenu">
+            <option :value="null" disabled> Select a menu</option>
+            <option v-for="menu in menus" :value="menu">{{ menu }}</option>
+          </Field>
+          <label for="kitchen_id">Cocina</label>
+          <Field name="kitchen" as="select" v-model="selectedKitchen">
+            <option :value="null" disabled> Select a kitchen</option>
+            <option v-for="kitchen in kitchens" :value="kitchen">{{ kitchen }}</option>
+          </Field>
+          <input
+            v-if="selectedMenu !== null"
+            type="hidden"
+            :value="selectedMenu.id"
             name="recipe[menu_id]"
-            :label="$t('menu.title')"
-            :options="props.menus"
-            />
-          <FormKit
-            type="select"
-            name="recipe[kitchen_id]"
-            :label="$t('kitchens.title')"
-            :options="props.kitchens"
-            />
-      </FormKit>
+          >
+          <input
+                  v-if="selectedKitchen !== null"
+                  type="hidden"
+                  :value="selectedKitchen.id"
+                  name="recipe[kitchen_id]"
+          >
+          <button type="submit">Submit</button>
+        </Form>
       </DialogPanel>
     </div>
   </Dialog>
