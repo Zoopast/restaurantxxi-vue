@@ -29,7 +29,12 @@ export default {
         quantity: "Cantidad",
         unit: "Unidad",
       },
-    }
+    },
+    show: {
+      button: "Ver receta",
+      edit: "Editar receta",
+      delete: "Eliminar receta",
+    },
   },
   tables: {
     title: "Mesas",

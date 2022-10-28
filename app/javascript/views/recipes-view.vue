@@ -9,7 +9,9 @@
     DialogPanel,
     DialogTitle,
     DialogDescription,
-  } from '@headlessui/vue'
+  } from '@headlessui/vue';
+  import axios from 'axios';
+  import recipesApi from "../../api/recipes";
 
   const selectedMenu = ref(null);
   const selectedKitchen = ref(null);
@@ -56,10 +58,23 @@
 
   const { t } = useI18n({});
 
+
+  async function deleteRecipe(recipe_id) {
+
+    await recipesApi.deleteRecipe(recipe_id).then((response) => {
+      console.log(response);
+    }).catch((error) => {
+      console.log(error);
+    });
+  };
 </script>
 <template lang="">
-  <div class="">
-    {{$t('recipes.title')}}
+  <div class="flex flex-col items-center">
+    <h1
+      class="text-xl"
+    >
+      {{$t('recipes.title')}}
+    </h1>
     <Dialog :open="isOpen" @close="setIsOpen" class="relative z-50">
     <!-- The backdrop, rendered as a fixed sibling to the panel container -->
     <div class="fixed inset-0 bg-black/30" aria-hidden="true" />
@@ -88,19 +103,19 @@
           v-bind:label="$t('recipes.new.description')"
           placeholder="Description"
         />
-
+          {{$t('recipes.new.ingredients.title')}}
           <fieldset
             class="InputGroup"
             v-for="(field, idx) in ingredients"
             :key="idx"
           >
             <legend>Recipe #{{ idx }}</legend>
-            <label :for="`name_${idx}`">Name</label>
-            <Field :id="`name_${idx}`" :name="`ingredients[${idx}].name`"/>
-            <label :for="`quantity_${idx}`">Name</label>
-            <Field :id="`quantity_${idx}`" :name="`ingredients[${idx}].quantity`"/>
-            <label :for="`unit_${idx}`">Name</label>
-            <Field :id="`unit_${idx}`" :name="`ingredients[${idx}].unit`"/>
+            <label :for="`name_${idx}`">{{$t('recipes.new.ingredients.name')}}</label>
+            <Field :id="`name_${idx}`" :name="`ingredients[${idx}][name]`"/>
+            <label :for="`quantity_${idx}`">{{$t('recipes.new.ingredients.quantity')}}</label>
+            <Field :id="`quantity_${idx}`" :name="`ingredients[${idx}][quantity]`" type="number"/>
+            <label :for="`unit_${idx}`">{{$t('recipes.new.ingredients.unit')}}</label>
+            <Field :id="`unit_${idx}`" :name="`ingredients[${idx}][unit]`"/>
             <button type="button" @click="addRow">Add</button>
             <button type="button" @click="removeRow(idx)">Remove</button>
           </fieldset>
@@ -161,6 +176,15 @@
                 </td>
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                   <span>{{recipe.description}}</span>
+                </td>
+                <td class="flex flex-row gap-2">
+                  <button
+                  >{{$t('recipes.show.button')}}</button>
+                  <button
+                  >{{$t('recipes.show.edit')}}</button>
+                  <button
+                    @click="deleteRecipe(recipe.id)"
+                  >{{$t('recipes.show.delete')}}</button>
                 </td>
               </tr>
             </tbody>

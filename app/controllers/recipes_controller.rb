@@ -12,13 +12,30 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
+      create_ingredients
       redirect_to recipes_path
     else
       render 'index'
     end
   end
 
+  def destroy
+    @recipe.destroy
+    redirect_to recipes_path
+  end
+
   private
+
+  def create_ingredients
+    ingredients = params[:ingredients].values
+
+    ingredients.each do |ingredient|
+      @recipe.ingredients.create!(name: ingredient[:name],
+                                  qty: ingredient[:quantity],
+                                  unit: ingredient[:unit],
+                                  recipe_id: @recipe.id)
+    end
+  end
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
