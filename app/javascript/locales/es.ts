@@ -23,8 +23,15 @@ export default {
       name: "Nombre de la receta",
       description: "Descripción",
       preparation: "Preparación",
+      placeholder: {
+        name: "Nombre de la receta",
+        description: "Descripción de la receta",
+        quantity: "Cantidad del ingrediente",
+        unit: 'Unidad de medida',
+      },
       ingredients: {
         title: "Ingredientes",
+        subtitle: "Ingrediente",
         name: "Nombre",
         quantity: "Cantidad",
         unit: "Unidad",
