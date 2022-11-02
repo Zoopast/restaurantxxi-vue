@@ -43,11 +43,14 @@ const {
 </script>
 <template>
   <div
-    class="TextInput"
+    class="flex flex-col"
     :class="{ 'has-error': !!errorMessage, success: meta.valid }"
   >
-    <label :for="name">{{ label }}</label>
+    <label
+      :for="name"
+      class="mx-2">{{ label }}</label>
     <input
+      class=" border border-gray-300 rounded-md p-2 mx-2"
       :name="name"
       :id="name"
       :type="type"
