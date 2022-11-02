@@ -29,7 +29,6 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import AboutView from "../views/about-view.vue";
 import NavBar from "../components/nav-bar.vue";
-
 import HomeView from "../views/home-view.vue";
 import ExpensesView from "../views/expenses-view.vue";
 import FinancesView from "../views/finances-view.vue";
@@ -51,16 +50,6 @@ import Locales from '../locales/locales';
 import { createI18n } from 'vue-i18n';
 
 document.addEventListener('DOMContentLoaded', () => {
-  let localAuthToken = localStorage.auth_token;
-  let cookiesExists = localAuthToken !== 'undefined' && localAuthToken !== null;
-  if(cookiesExists)
-  {
-    const auth_token = localStorage.getItem('auth_token');
-    const authTokenExists = auth_token !== 'undefined' && auth_token !== null;
-    if(authTokenExists){
-      auth.loginUserWithToken({auth_token});
-    }
-  }
   const i18n = createI18n({
     legacy: false,
     locale: 'es',
