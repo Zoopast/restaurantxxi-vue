@@ -6,7 +6,7 @@
   import TextInput from '../text-input.vue';
   import csrfInput from '../csrf-input.vue';
   import Dropdown from '../dropdown.vue';
-
+  import Select from '../select.vue';
   const props = defineProps({
     menus: {
       type: Array,
@@ -108,14 +108,18 @@
               />
               <button
                 type="button"
-                @click="addRow"
-                class="bg-green-300 hover:bg-green-400 text-white font-bold py-2 px-4 rounded mx-2"
-                >Add</button>
+                @click="removeRow(idx)"
+                class="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2"
+              >
+                {{$t('buttons.delete')}}
+              </button>
               <button
                 type="button"
-                @click="removeRow(idx)"
-                class="bg-red-300 hover:bg-red-400 text-white font-bold py-2 px-4 rounded mx-2"
-                >Remove</button>
+                @click="addRow"
+                class="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mx-2"
+              >
+                {{$t('buttons.add')}}
+              </button>
               </div>
             </fieldset>
           </div>
@@ -141,7 +145,12 @@
             :value="selectedKitchen"
             name="recipe[kitchen_id]"
           />
-          <Dropdown />
+          <Select
+            :options="menus"
+          />
+          <Select
+            :options="kitchens"
+          />
           <button type="submit">Submit</button>
         </Form>
       </template>

@@ -61,7 +61,7 @@
       :kitchens="kitchens"
       :recipes="recipes"
     />
-    <button @click="setIsOpen">{{$t('recipes.new.title')}}</button>
+    <button @click="setIsOpen" class="bg-green-500 rounded-sm p-2 text-white">{{$t('recipes.new.title')}}</button>
     <div id="recipes" class="min-w-full">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -98,6 +98,7 @@
                     >{{$t('recipes.show.edit')}}</button>
                     <button
                       @click="deleteRecipe(recipe.id)"
+                      class="text-red-500"
                     >{{$t('recipes.show.delete')}}</button>
                   </td>
                 </tr>
