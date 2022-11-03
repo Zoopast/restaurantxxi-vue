@@ -1,4 +1,10 @@
 export default {
+  buttons: {
+    save: 'Guardar',
+    add: 'Añadir',
+    cancel: 'Cancelar',
+    delete: 'Eliminar',
+  },
   user: {
     title: 'Usuario',
   },
