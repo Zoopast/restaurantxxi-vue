@@ -3,8 +3,13 @@
   import { useI18n } from 'vue-i18n';
   import axios from 'axios';
   import NewRecipeModal from '../components/recipes/new-recipe-modal.vue';
+  import ShowRecipeModal from '../components/recipes/showRecipeModal.vue';
+  import EditRecipeModal from '../components/recipes/editRecipeModal.vue';
 
-  const props = defineProps({
+
+  const { t } = useI18n({});
+
+  defineProps({
     menus: {
       type: Array,
       default: () => []
@@ -19,33 +24,90 @@
     },
   })
 
+  const recipe = ref({
+    recipe: {
+      name: '',
+      description: '',
+      menu_id: '',
+      kitchen_id: '',
+      ingredients: [
+        {
+          name: '',
+          quantity: 0,
+          unit: ''
+        }
+      ]
+    },
+  });
+
+  const ingredients  = ref([
+    {
+      name: '',
+      quantity: 0,
+      unit: '',
+    },
+  ]);
+
+  const show = ref(false);
   const submitted = ref(false);
+  const edit = ref(false);
+
+
   const submitHandler = async () => {
     await new Promise((r) => setTimeout(r, 1000));
     submitted.value = true;
   }
 
-  const isOpen = ref(true);
+  const isOpen = ref(false);
 
   function setIsOpen() {
     isOpen.value = !isOpen.value
   }
 
-  const { t } = useI18n({});
+  function setShow() {
+    show.value = !show.value;
+  }
 
+
+  function setEdit() {
+    edit.value = !edit.value;
+  }
 
   async function deleteRecipe(recipe_id : string) {
 
     await axios.delete('/recipes/' + recipe_id)
       .then(function (response) {
-        console.log(response);
         window.location.reload()
       })
       .catch(function (error) {
-        console.log(error);
         window.location.reload()
       });
   };
+
+  async function showRecipe(recipe_id : string) {
+    const response = await axios.get('/recipes/' + recipe_id)
+      .then(function (response) {
+        recipe.value = response.data;
+        show.value = true;
+      })
+      .catch(function (error) {
+        console.log(error);
+        return error
+      });
+  }
+
+  async function editRecipe(recipe_id : string) {
+    const response = await axios.get('/recipes/' + recipe_id)
+      .then(function (response) {
+        recipe.value = response.data;
+        edit.value = true;
+      })
+      .catch(function (error) {
+        console.log(error);
+        return error
+      });
+  }
+
 </script>
 <template>
   <div class="flex flex-col items-center">
@@ -54,12 +116,28 @@
     >
       {{$t('recipes.title')}}
     </h1>
+    <EditRecipeModal
+      :open="edit"
+      @close="setEdit"
+      :recipe="recipe.recipe"
+      :menus="menus"
+      :kitchens="kitchens"
+      :ingredients="recipe.ingredients"
+    />
+
+
     <NewRecipeModal
       :open="isOpen"
       @close="setIsOpen"
       :menus="menus"
       :kitchens="kitchens"
       :recipes="recipes"
+    />
+
+    <ShowRecipeModal
+      :open="show"
+      @close="setShow"
+      :recipe="recipe"
     />
     <button @click="setIsOpen" class="bg-green-500 rounded-sm p-2 text-white">{{$t('recipes.new.title')}}</button>
     <div id="recipes" class="min-w-full">
@@ -93,8 +171,10 @@
                   </td>
                   <td class="flex flex-row gap-2">
                     <button
+                      @click="showRecipe(recipe.id)"
                     >{{$t('recipes.show.button')}}</button>
                     <button
+                      @click="editRecipe(recipe.id)"
                     >{{$t('recipes.show.edit')}}</button>
                     <button
                       @click="deleteRecipe(recipe.id)"

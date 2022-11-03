@@ -4,6 +4,7 @@ export default {
     add: 'Añadir',
     cancel: 'Cancelar',
     delete: 'Eliminar',
+    edit: 'Editar',
   },
   user: {
     title: 'Usuario',
@@ -24,6 +25,9 @@ export default {
   },
   recipes: {
     title: "Recetas",
+    edit: {
+      title: "Editar receta",
+    },
     new: {
       title: "Nueva receta",
       name: "Nombre de la receta",
