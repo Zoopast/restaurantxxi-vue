@@ -48,18 +48,28 @@ class RecipesController < ApplicationController
 
   def edit_ingredients
     ingredients = params[:ingredients].values
-    current_ingredients = current_recipe.ingredients.collect {  |i| i.id }
+    current_ingredients_ids = current_recipe.ingredients.collect {  |i| i.id }
+    ingredients_ids = ingredients.collect { |i| i[:id] }
 
-    ingredients.each do |ingredient|
-      if ingredient[:id].present? && current_ingredients.include?(ingredient[:id])
-        @ingredient = Ingredient.find(ingredient[:id])
-        @ingredient.update!({ name: ingredient[:name], qty: ingredient[:quantity], unit: ingredient[:unit] })
+    ingredients_ids.each do |id|
+      ingredient_info = ingredients.find { |i| i[:id] == id }
+      if id.empty?
+        Ingredient.create!(name: ingredient_info[:name],
+                           recipe_id: @recipe.id,
+                           qty: ingredient_info[:quantity],
+                           unit: ingredient_info[:unit])
       else
-
-        binding.pry
-
-        Ingredient.find(ingredient[:id]).destroy!
+        ingredient = Ingredient.find(id)
+        ingredient.update!(name: ingredient_info[:name],
+                           qty: ingredient_info[:quantity],
+                           unit: ingredient_info[:unit])
       end
+    end
+
+    current_ingredients_ids.each do |id|
+      next if ingredients_ids.include?(id.to_s)
+      ingredient = Ingredient.find(id)
+      ingredient.destroy!
     end
   end
 
