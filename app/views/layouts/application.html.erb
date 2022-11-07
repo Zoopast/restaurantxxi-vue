@@ -23,7 +23,9 @@
 
   <body>
     <div id="app">
-      <nav-bar></nav-bar>
+      <nav-bar
+        userSignedIn="<%= user_signed_in? %>"
+      ></nav-bar>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
