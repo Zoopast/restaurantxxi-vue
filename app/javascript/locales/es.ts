@@ -9,6 +9,12 @@ export default {
   user: {
     title: 'Usuario',
   },
+  users: {
+    email: 'Correo electrónico',
+    password: 'Contraseña',
+    password_confirmation: 'Confirmar contraseña',
+    sign_in: 'Iniciar sesión',
+  },
   session: {
     signin: 'Iniciar sesión',
     signout: 'Cerrar sesión',

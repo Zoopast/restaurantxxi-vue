@@ -27,6 +27,7 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 import { createApp } from "vue/dist/vue.esm-bundler.js";
+import SignIn from '../views/SignIn.vue';
 import AboutView from "../views/About.vue";
 import NavBar from "../components/nav-bar.vue";
 import HomeView from "../views/Home.vue";
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
       TransactionsView,
       UserView,
       SessionManager,
+      SignIn,
     },
   });
   app.use(pinia);

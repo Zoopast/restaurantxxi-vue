@@ -2,8 +2,15 @@
   import { useI18n } from 'vue-i18n';
   const { t } = useI18n({});
 
+  defineProps({
+    userSignedin: {
+      type: Boolean,
+      default: false
+    }
+  });
+
 </script>
-<template lang="">
+<template>
   <div class=" h-12 flex flex-row items-center justify-between text-gray-500 bg-gray-100 hover:text-gray-700 focus:text-gray-700">
     <div>
       <a href="/">RestaurantXXI</a>
@@ -18,6 +25,7 @@
       <a href="/" class="p-2 nav-item">{{t('finances.title')}}</a>
     </div>
     <div class="flex flex-row gap-2">
+      {{JSON.stringify(userSignedin)}}
       <a>{{t('user.title')}}</a>
       <a>{{t('session.signin')}}</a>
       <a>{{t('session.signup')}}</a>
