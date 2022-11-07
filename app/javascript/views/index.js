@@ -1,4 +1,4 @@
-import HomeView from "./home-view.vue";
+import HomeView from "./Home.vue";
 import ExpensesView from "./expenses-view.vue";
 import FinancesView from "./finances-view.vue";
 import InventoryView from "./inventory-view.vue";

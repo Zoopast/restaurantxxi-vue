@@ -27,21 +27,21 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // Example: Import a stylesheet in app/frontend/index.css
 // import '~/index.css'
 import { createApp } from "vue/dist/vue.esm-bundler.js";
-import AboutView from "../views/about-view.vue";
+import AboutView from "../views/About.vue";
 import NavBar from "../components/nav-bar.vue";
-import HomeView from "../views/home-view.vue";
-import ExpensesView from "../views/expenses-view.vue";
-import FinancesView from "../views/finances-view.vue";
-import InventoryView from "../views/inventory-view.vue";
-import ItemsView from "../views/items-view.vue";
-import KitchensView from "../views/kitchens-view.vue";
-import OrdersView from "../views/orders-view.vue";
-import ProductsView from "../views/products-view.vue";
-import RecipesView from "../views/recipes-view.vue";
-import ReservationsView from "../views/reservations-view.vue";
-import TablesView from "../views/tables-view.vue";
-import TransactionsView from "../views/transactions-view.vue";
-import UserView from "../views/user-view.vue";
+import HomeView from "../views/Home.vue";
+import ExpensesView from "../views/Expenses.vue";
+import FinancesView from "../views/Finances.vue";
+import InventoryView from "../views/Inventory.vue";
+import ItemsView from "../views/Items.vue";
+import KitchensView from "../views/Kitchens.vue";
+import OrdersView from "../views/Orders.vue";
+import ProductsView from "../views/Products.vue";
+import RecipesView from "../views/Recipes.vue";
+import ReservationsView from "../views/Reservations.vue";
+import TablesView from "../views/Tables.vue";
+import TransactionsView from "../views/Transactions.vue";
+import UserView from "../views/Users.vue";
 
 import SessionManager from "../views/SessionManager.vue";
 import { createPinia } from 'pinia';
