@@ -28,6 +28,7 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // import '~/index.css'
 import { createApp } from "vue/dist/vue.esm-bundler.js";
 import SignIn from '../views/SignIn.vue';
+import SignUp from '../views/SignUp.vue';
 import AboutView from "../views/About.vue";
 import NavBar from "../components/nav-bar.vue";
 import HomeView from "../views/Home.vue";
@@ -79,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
       UserView,
       SessionManager,
       SignIn,
+      SignUp,
     },
   });
   app.use(pinia);

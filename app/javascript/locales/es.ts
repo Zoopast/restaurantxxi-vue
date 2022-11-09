@@ -11,9 +11,13 @@ export default {
   },
   users: {
     email: 'Correo electrónico',
+    email_placeholder: 'Ingresa tu correo electrónico',
     password: 'Contraseña',
+    password_placeholder: 'Ingresa tu contraseña',
     password_confirmation: 'Confirmar contraseña',
+    password_confirmation_placeholder: 'Vuelve a ingresar tu contraseña',
     sign_in: 'Iniciar sesión',
+    sign_up: 'Registrarse',
   },
   session: {
     signin: 'Iniciar sesión',

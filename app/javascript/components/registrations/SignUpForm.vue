@@ -13,7 +13,7 @@
     </h1>
     <div class="flex justify-center items-center border rounded-md p-5">
       <Form
-        action="/users/sign_in"
+        action="/users"
         method="POST"
       >
       <csrfInput />
@@ -29,9 +29,15 @@
         :placeholder="$t('users.password_placeholder')"
         type="password"
       />
+      <TextInput
+        name="user[password_confirmation]"
+        :label="$t('users.password_confirmation')"
+        :placeholder="$t('users.password_confirmation_placeholder')"
+        type="password"
+      />
       <div class="flex m-2">
         <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-auto rounded">
-          {{$t('users.sign_in')}}
+          {{$t('users.sign_up')}}
         </button>
       </div>
       </Form>
