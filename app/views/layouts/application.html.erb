@@ -24,7 +24,7 @@
   <body>
     <div id="app">
       <nav-bar
-        userSignedIn="<%= user_signed_in? %>"
+        :current-user="<%= current_user.to_json %>"
       ></nav-bar>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>

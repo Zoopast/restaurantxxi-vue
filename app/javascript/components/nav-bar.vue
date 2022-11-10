@@ -1,17 +1,32 @@
 <script setup lang="ts">
   import { useI18n } from 'vue-i18n';
+  import axios from 'axios';
+  import { csrfToken } from '@rails/ujs';
   const { t } = useI18n({});
 
   defineProps({
-    userSignedin: {
-      type: Boolean,
-      default: false
+    currentUser: {
+      type: Object,
+      required: true
     }
   });
 
+  function logout() {
+    fetch('/users/sign_out', {
+      method: 'DELETE',
+      headers: {
+        'X-CSRF-Token': csrfToken(),
+      }
+    }).then(() => {
+      window.location.replace('/');
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
 </script>
 <template>
-  <div class=" h-12 flex flex-row items-center justify-between text-gray-500 bg-gray-100 hover:text-gray-700 focus:text-gray-700">
+  <div class="p-2 h-12 flex flex-row items-center justify-between text-gray-500 bg-gray-100 hover:text-gray-700 focus:text-gray-700">
     <div>
       <a href="/">RestaurantXXI</a>
     </div>
@@ -24,12 +39,37 @@
       <a href="/" class="p-2 nav-item">{{t('reservations.title')}}</a>
       <a href="/" class="p-2 nav-item">{{t('finances.title')}}</a>
     </div>
-    <div class="flex flex-row gap-2">
-      {{JSON.stringify(userSignedin)}}
-      <a>{{t('user.title')}}</a>
-      <a>{{t('session.signin')}}</a>
-      <a>{{t('session.signup')}}</a>
-      <a>{{t('session.signout')}}</a>
+    <div class="flex flex-row">
+      <div
+        v-if="currentUser"
+        class="flex gap-2"
+      >
+        <a>{{t('user.title')}}</a>
+        <a
+          class="p-2 nav-item"
+          href="#"
+          @click.prevent="logout"
+        >
+          {{t('session.signout')}}
+        </a>
+      </div>
+      <div
+        v-if="!currentUser"
+        class="flex gap-2"
+      >
+        <a
+          class="p-2 nav-item"
+          href="/users/sign_in"
+        >
+          {{t('session.signin')}}
+        </a>
+        <a
+          class="p-2 nav-item"
+          href="/users/sign_up"
+        >
+          {{t('session.signup')}}
+        </a>
+      </div>
     </div>
   </div>
 </template>
