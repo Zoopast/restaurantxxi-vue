@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   resources :recipes
+  resources :items
+  resources :menus
+  resources :tables
+  resources :clients
+  resources :reservations
+  resources :finances
   post 'recipes/update_recipe', to: 'recipes#update_recipe'
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

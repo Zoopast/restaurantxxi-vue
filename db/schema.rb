@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_26_003327) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_12_124951) do
+  create_table "clients", force: :cascade do |t|
+    t.string "full_name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "finances", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.float "qty"
@@ -69,6 +81,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_26_003327) do
     t.string "description"
     t.index ["kitchen_id"], name: "index_recipes_on_kitchen_id"
     t.index ["menu_id"], name: "index_recipes_on_menu_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.datetime "reservation_datetime"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.datetime "reserved_at"
+    t.integer "seats"
+    t.integer "table_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
