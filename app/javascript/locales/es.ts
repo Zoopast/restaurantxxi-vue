@@ -30,6 +30,15 @@ export default {
   inventory:{
     title: 'Inventario',
   },
+  items: {
+    title: 'Inventario',
+    name: 'Nombre',
+    stock: 'Stock',
+    new: {
+      title: 'Nuevo item',
+    }
+
+  },
   menu:{
     title: 'Menú',
   },
@@ -76,6 +85,7 @@ export default {
     title: "Finanzas",
   },
   actions: {
+    title: "Acciones",
     back: 'Atrás',
     continue: 'Continuar',
     selectOption: 'Seleccionar opción',
