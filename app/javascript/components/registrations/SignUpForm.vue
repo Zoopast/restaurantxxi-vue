@@ -9,7 +9,7 @@
     class="flex flex-col justify-center items-center m-10"
   >
     <h1 class="text-2xl font-bold mb-4">
-      {{$t('users.sign_in')}}
+      {{$t('users.sign_up')}}
     </h1>
     <div class="flex justify-center items-center border rounded-md p-5">
       <Form
