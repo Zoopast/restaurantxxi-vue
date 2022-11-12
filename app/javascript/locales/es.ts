@@ -33,9 +33,23 @@ export default {
   items: {
     title: 'Inventario',
     name: 'Nombre',
-    stock: 'Stock',
+    stock: 'Stock item',
+    show: {
+      button: 'Ver',
+    },
     new: {
       title: 'Nuevo item',
+      name: 'Nombre',
+      stock: 'Stock',
+      price: 'Precio',
+      placeholder: {
+        name: 'Ingresa el nombre del item',
+        stock: 'Ingresa el stock del item',
+        price: 'Ingresa el precio del item',
+      }
+    },
+    add: {
+      button: 'Pedir stock',
     }
 
   },

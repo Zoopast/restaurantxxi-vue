@@ -44,7 +44,12 @@
         v-if="currentUser"
         class="flex gap-2"
       >
-        <a>{{t('user.title')}}</a>
+        <a
+          class="p-2 nav-item"
+          href="#"
+        >
+          {{t('user.title')}}
+        </a>
         <a
           class="p-2 nav-item"
           href="#"

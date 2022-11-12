@@ -4,16 +4,25 @@
   import axios from 'axios';
   import NewItemModal from '../components/items/newItemModal.vue';
   import ShowItemModal from '../components/items/showItemModal.vue';
+  import AddStockModal from '../components/items/addStockModal.vue';
   const { t } = useI18n({});
 
 
   const show = ref(false);
   const submitted = ref(false);
   const isOpen = ref(false);
-
+  const addItems = ref(false);
 
   defineProps({
     items: {
+      type: Array,
+      required: true
+    },
+    kitchens: {
+      type: Array,
+      required: true
+    },
+    inventories: {
       type: Array,
       required: true
     },
@@ -26,6 +35,10 @@
 
   function setIsOpen() {
     isOpen.value = !isOpen.value
+  }
+
+  function setAddItems() {
+    addItems.value = !addItems.value
   }
 
   async function showItem(item_id : string) {
@@ -41,13 +54,27 @@
   }
 </script>
 <template>
-<div class="flex flex-col ">
+<div class="flex flex-col">
 
 <div class="flex items-center justify-between">
   <h1 class="text-4xl font-bold">{{t('items.title')}}</h1>
 </div>
 
-<button @click="setIsOpen" class="bg-green-500 rounded-sm p-2 text-white">{{$t('items.new.title')}}</button>
+<NewItemModal
+  :open="isOpen"
+  @close="setIsOpen"
+  :kitchens="kitchens"
+  :inventories="inventories"
+/>
+
+<AddStockModal
+  :open="addItems"
+  @close="setAddItems"
+  :items="items"
+/>
+
+<button @click="setIsOpen" class="bg-blue-500 rounded-sm p-2 m-2 text-white">{{$t('items.new.title')}}</button>
+<button @click="setAddItems" class="bg-green-500 rounded-sm p-2 m-2 text-white">{{$t('items.add.button')}}</button>
 
 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
   <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -79,10 +106,11 @@
               <span>{{item.stock}}</span>
             </td>
             <td class="flex flex-row gap-2">
-                    <button
-                      @click="showItem(item.id)"
-                    >{{$t('recipes.show.button')}}</button>
-
+              <button
+                @click="showItem(item.id)"
+              >
+                {{$t('items.show.button')}}
+              </button>
             </td>
           </tr>
         </tbody>
