@@ -9,6 +9,7 @@
 #  updated_at  :datetime         not null
 #  menu_id     :integer          not null
 #  kitchen_id  :integer
+#  description :string
 #
 FactoryBot.define do
   factory :recipe do

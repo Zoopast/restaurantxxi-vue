@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_12_124951) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_12_221855) do
   create_table "clients", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "expense_items", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "price", null: false
+    t.integer "quantity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "expense_id", null: false
+    t.index ["expense_id"], name: "index_expense_items_on_expense_id"
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer "amount", null: false
+    t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -111,6 +128,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_12_124951) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "expense_items", "expenses"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "items", "inventories"
   add_foreign_key "recipes", "menus"
