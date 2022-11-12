@@ -12,6 +12,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def add_stock
+    items = params[:items].values
+    items.each do |item|
+      Item.find(item[:id]).increment(:stock, item[:stock].to_i).save
+    end
+
+    redirect_to items_path
+  end
+
   private
 
   def item_params

@@ -49,7 +49,12 @@ export default {
       }
     },
     add: {
+      title: 'Pedir stock',
       button: 'Pedir stock',
+      stock: 'Stock',
+      placeholder: {
+        stock: 'Ingresa el stock a pedir',
+      },
     }
 
   },
