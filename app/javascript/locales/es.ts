@@ -112,4 +112,15 @@ export default {
   kitchens:{
     title: 'Cocinas',
   },
+  expenses: {
+    title: "Gastos",
+    show: {
+      title: "Gasto Número",
+      description: "Descripción",
+      total: "Monto",
+      items: {
+        title: "Items",
+      }
+    }
+  }
 }

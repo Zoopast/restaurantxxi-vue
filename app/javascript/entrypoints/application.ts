@@ -44,6 +44,7 @@ import ReservationsView from "../views/Reservations.vue";
 import TablesView from "../views/Tables.vue";
 import TransactionsView from "../views/Transactions.vue";
 import UserView from "../views/Users.vue";
+import ExpenseView from '../views/Expense.vue';
 
 import SessionManager from "../views/SessionManager.vue";
 import { createPinia } from 'pinia';
@@ -81,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
       SessionManager,
       SignIn,
       SignUp,
+      ExpenseView,
     },
   });
   app.use(pinia);
