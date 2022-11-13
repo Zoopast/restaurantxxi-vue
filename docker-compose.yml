@@ -1,0 +1,32 @@
+# Declare the Compose version
+version: '3.7'
+
+services:
+  redis:
+    image: redis:latest
+    command: redis-server
+    ports:
+      - 6379:6379
+  app:
+    image: restaurantxxi:latest
+    depends_on:
+      - redis
+    ports:
+      - 3000:3000
+    environment:
+      - REDIS_URL=redis:6379
+      - NLS_LANG=AMERICAN_AMERICA.AL32UTF8
+    env_file:
+      - '.env'
+
+  cable:
+    depends_on:
+      - 'redis'
+    build: .
+    command: puma -p 28080 cable/config.ru
+    ports:
+      - '28080:28080'
+    volumes:
+      - '.:/app'
+    env_file:
+      - '.env'
