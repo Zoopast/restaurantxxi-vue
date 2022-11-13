@@ -3,6 +3,9 @@ setup:
     env_file: .env
 build:
   docker:
+    release:
+       dockerfile: Dockerfile
+       target: builder
     web: Dockerfile
 run:
   web: bundle exec puma -C config/puma.rb
