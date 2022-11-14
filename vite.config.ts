@@ -25,6 +25,7 @@ export default defineConfig({
       },
     }),
     vueI18n({
+      runtimeOnly: false,
       include: [ resolve( resolve(dirname(fileURLToPath(import.meta.url)), './app/javascript/locales/**')) ],
     }),
   ],

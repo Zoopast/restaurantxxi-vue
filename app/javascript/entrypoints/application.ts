@@ -50,7 +50,7 @@ import SessionManager from "../views/SessionManager.vue";
 import { createPinia } from 'pinia';
 import 'virtual:windi.css';
 import Locales from '../locales/locales';
-import { createI18n } from 'vue-i18n/dist/vue-i18n.esm-bundler.js';
+import { createI18n } from 'vue-i18n';
 
 document.addEventListener('DOMContentLoaded', () => {
   const i18n = createI18n({
