@@ -29,6 +29,8 @@ RUN unzip $APP_HOME/vendor/instantclient-sqlplus-linux.x64-21.7.0.0.0dbru.zip
 RUN echo "gem: --no-rdoc --no-ri" >> ~/.gemrc
 
 WORKDIR $APP_HOME
+RUN chmod +x docker-rails.sh
+RUN chmod +x docker-vite.sh
 RUN yarn install --check-files
 RUN bundle install
 RUN test -f tmp/pids/server.pid && rm -f tmp/pids/server.pid; true
