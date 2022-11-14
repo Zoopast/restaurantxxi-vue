@@ -1,15 +1,5 @@
-setup:
-  config:
-    env_file: .env
 build:
   docker:
-    release:
-       dockerfile: Dockerfile
     web: Dockerfile
-release:
-  image: web
-  command:
-    - ./docker-vite.sh
-    - ./docker-rails.sh
 run:
   web: bundle exec puma -C config/puma.rb
