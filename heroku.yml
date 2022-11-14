@@ -5,9 +5,11 @@ build:
   docker:
     release:
        dockerfile: Dockerfile
-       command:
-        - ./docker-vite.sh
-        - ./docker-rails.sh
     web: Dockerfile
+release:
+  image: web
+  command:
+    - ./docker-vite.sh
+    - ./docker-rails.sh
 run:
   web: bundle exec puma -C config/puma.rb
