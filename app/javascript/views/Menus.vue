@@ -2,7 +2,8 @@
  import { ref } from 'vue';
  import { useI18n } from 'vue-i18n';
  import AddMenuModal from '../components/menus/addMenuModal.vue';
- import showMenuModal from '../components/menus/showMenuModal.vue';
+ import ShowMenuModal from '../components/menus/showMenuModal.vue';
+ import EditMenuModal from '../components/menus/editMenuModal.vue';
  import { csrfToken } from '@rails/ujs';
  import axios from 'axios';
  const { t } = useI18n({});
@@ -15,10 +16,39 @@
  });
 
  const isOpen = ref(false);
+ const edit = ref(false);
+ const show = ref(false);
+ const menu = ref({
+    menu: {
+      name: '',
+      description: '',
+      default: false
+    }
+ });
 
  function setIsOpen() {
     isOpen.value = !isOpen.value
+ }
+
+ function setShow() {
+   show.value = !show.value;
+ }
+
+  function setEdit() {
+    edit.value = !edit.value;
   }
+
+
+ async function editMenu(menu_id : string){
+  await axios.get('/menus/' + menu_id)
+    .then((response) => {
+      menu.value = response.data;
+      edit.value = true;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+ }
 
  async function deleteMenu(menu_id : string){
   await axios.delete('/menus/' + menu_id, {
@@ -47,6 +77,11 @@
   <AddMenuModal
     :open="isOpen"
     @close="setIsOpen"
+  />
+  <EditMenuModal
+    :open="edit"
+    @close="setEdit"
+    :menu="menu.menu"
   />
   <div id="menus" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -89,6 +124,7 @@
                     class="m-2"
                   >{{t('menus.actions.show')}}</button>
                   <button
+                    @click="editMenu(menu.id)"
                     class="m-2"
                   >{{t('menus.actions.edit')}}</button>
                   <button

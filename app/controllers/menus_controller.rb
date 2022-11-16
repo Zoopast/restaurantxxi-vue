@@ -5,6 +5,14 @@ class MenusController < ApplicationController
     @menus = Menu.all
   end
 
+  def show
+    menu = {
+      menu: @menu
+    }
+    puts menu
+    render json: menu
+  end
+
   def create
     @menu = Menu.new(menu_params)
     if @menu.save
@@ -19,7 +27,23 @@ class MenusController < ApplicationController
     redirect_to menus_path
   end
 
+  def update_menu
+    menu = current_menu
+    if menu.update!(menu_params)
+
+      binding.pry
+
+      redirect_to menus_path
+    else
+      render json: menu.errors, status: :unprocessable_entity
+    end
+  end
+
   private
+
+  def current_menu
+    Menu.find(params[:menu][:id])
+  end
 
   def menu_params
     params.require(:menu).permit(:name, :description, :default_menu)

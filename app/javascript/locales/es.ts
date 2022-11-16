@@ -77,7 +77,11 @@ export default {
         name: 'Ingresa el nombre del menú',
         description: 'Ingresa la descripción del menú',
       },
-      button: 'Crear menú',
+    button: 'Crear menú',
+    },
+    edit: {
+      title: 'Editar menú',
+      button: 'Editar'
     },
     title: 'Menús',
   },

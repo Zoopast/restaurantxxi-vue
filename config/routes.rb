@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :finances
   post 'recipes/update_recipe', to: 'recipes#update_recipe'
   post 'items/add_stock', to: 'items#add_stock'
+  post 'menus/update_menu', to: 'menus#update_menu'
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { Switch, SwitchGroup, SwitchLabel } from '@headlessui/vue'
 
-defineProps({
+const props = defineProps({
   name: {
     type: String,
     default: ''
@@ -11,9 +11,13 @@ defineProps({
     type: String,
     default: ''
   },
+  default: {
+    type: Boolean,
+    default: false
+  }
 });
 
-const enabled = ref(false);
+const enabled = ref(props.default);
 
 </script>
 
