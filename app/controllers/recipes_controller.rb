@@ -48,7 +48,7 @@ class RecipesController < ApplicationController
 
   def edit_ingredients
     ingredients = params[:ingredients].values
-    current_ingredients_ids = current_recipe.ingredients.collect {  |i| i.id }
+    current_ingredients_ids = current_recipe.ingredients.collect(&:id)
     ingredients_ids = ingredients.collect { |i| i[:id] }
 
     ingredients_ids.each do |id|
@@ -68,6 +68,7 @@ class RecipesController < ApplicationController
 
     current_ingredients_ids.each do |id|
       next if ingredients_ids.include?(id.to_s)
+
       ingredient = Ingredient.find(id)
       ingredient.destroy!
     end
@@ -88,7 +89,7 @@ class RecipesController < ApplicationController
   end
 
   def current_recipe
-    @recipe ||= Recipe.find(params[:recipe][:id])
+    @current_recipe ||= Recipe.find(params[:recipe][:id])
   end
 
   def recipe_params

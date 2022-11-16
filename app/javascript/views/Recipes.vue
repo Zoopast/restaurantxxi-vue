@@ -5,7 +5,7 @@
   import NewRecipeModal from '../components/recipes/new-recipe-modal.vue';
   import ShowRecipeModal from '../components/recipes/showRecipeModal.vue';
   import EditRecipeModal from '../components/recipes/editRecipeModal.vue';
-
+  import { csrfToken } from '@rails/ujs';
 
   const { t } = useI18n({});
 
@@ -67,7 +67,11 @@
 
   async function deleteRecipe(recipe_id : string) {
 
-    await axios.delete('/recipes/' + recipe_id)
+    await axios.delete('/recipes/' + recipe_id,{
+      headers: {
+        'X-CSRF-Token': csrfToken(),
+      },
+    })
       .then(function (response) {
         window.location.reload()
       })
