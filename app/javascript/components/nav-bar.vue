@@ -32,7 +32,7 @@
     </div>
     <div class="">
       <a href="/items" class="p-2 nav-item">{{t('inventory.title')}}</a>
-      <a href="/menus" class="p-2 nav-item">{{t('menu.title')}}</a>
+      <a href="/menus" class="p-2 nav-item">{{t('menus.title')}}</a>
       <a href="/recipes" class="p-2 nav-item">{{t('recipes.title')}}</a>
       <a href="/tables" class="p-2 nav-item">{{t('tables.title')}}</a>
       <a href="/clients" class="p-2 nav-item">{{t('clients.title')}}</a>
