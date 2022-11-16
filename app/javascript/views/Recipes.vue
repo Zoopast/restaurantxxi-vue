@@ -49,15 +49,7 @@
   ]);
 
   const show = ref(false);
-  const submitted = ref(false);
   const edit = ref(false);
-
-
-  const submitHandler = async () => {
-    await new Promise((r) => setTimeout(r, 1000));
-    submitted.value = true;
-  }
-
   const isOpen = ref(false);
 
   function setIsOpen() {
@@ -112,7 +104,7 @@
 <template>
   <div class="flex flex-col items-center">
     <h1
-      class="text-xl"
+      class="text-4xl font-bold"
     >
       {{$t('recipes.title')}}
     </h1>
@@ -139,7 +131,12 @@
       @close="setShow"
       :recipe="recipe"
     />
-    <button @click="setIsOpen" class="bg-green-500 rounded-sm p-2 text-white">{{$t('recipes.new.title')}}</button>
+    <button
+      @click="setIsOpen"
+      class="block px-5 py-3 m-2 font-medium text-white bg-green-600 rounded-lg"
+    >
+      {{$t('recipes.new.title')}}
+    </button>
     <div id="recipes" class="min-w-full">
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
