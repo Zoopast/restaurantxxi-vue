@@ -54,6 +54,12 @@
   }
 </script>
 <template>
+
+  <div class="flex flex-col items-center justify-center">
+    <h1 class="text-4xl font-bold">{{t('items.title')}}</h1>
+    <button @click="setIsOpen" class="block px-5 py-3 m-2 font-medium text-white bg-green-600 rounded-lg">{{$t('items.new.title')}}</button>
+    <button @click="setAddItems" class="block px-5 py-3 m-2 font-medium text-white bg-blue-500 rounded-lg">{{$t('items.add.button')}}</button>
+  </div>
 <div class="flex flex-col">
 
 <div class="flex items-center justify-between">
@@ -72,9 +78,6 @@
   @close="setAddItems"
   :items="items"
 />
-
-<button @click="setIsOpen" class="bg-blue-500 rounded-sm p-2 m-2 text-white">{{$t('items.new.title')}}</button>
-<button @click="setAddItems" class="bg-green-500 rounded-sm p-2 m-2 text-white">{{$t('items.add.button')}}</button>
 
 <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
   <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
