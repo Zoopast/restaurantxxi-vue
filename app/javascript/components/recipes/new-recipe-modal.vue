@@ -22,7 +22,7 @@
     },
   })
 
-  const isOpen = ref(true);
+  const isOpen = ref(false);
   const selectedMenu = ref(null);
   const selectedKitchen = ref(null);
   const submitted = ref(false);
@@ -62,14 +62,14 @@
           <TextInput
             name="recipe[name]"
             type="text"
-            v-bind:label="$t('recipes.new.name')"
+            :label="$t('recipes.new.name')"
             :placeholder="$t('recipes.new.placeholder.name')"
           />
 
           <TextInput
             name="recipe[description]"
             type="text"
-            v-bind:label="$t('recipes.new.description')"
+            :label="$t('recipes.new.description')"
             :placeholder="$t('recipes.new.placeholder.description')"
           />
           <div
@@ -107,7 +107,7 @@
                 :placeholder="$t('recipes.new.placeholder.unit')"
               />
               <button
-                v-if="ingredients.length > 1"
+                v-if="ingredients.length > 1 && (idx + 1) === ingredients.length"
                 type="button"
                 @click="removeRow(idx)"
                 class="bg-red-400 hover:bg-red-500 text-white font-bold py-2 px-4 rounded mx-2"
@@ -115,6 +115,7 @@
                 {{$t('buttons.delete')}}
               </button>
               <button
+                v-if="ingredients.length >= 1 && (idx + 1) === ingredients.length"
                 type="button"
                 @click="addRow"
                 class="bg-green-400 hover:bg-green-500 text-white font-bold py-2 px-4 rounded mx-2"
@@ -138,12 +139,16 @@
               :label="$t('kitchens.title')"
             />
           </div>
-          <button
-            type="submit"
-            class="bg-green-600 text-light-300 rounded-sm p-4 m-2 flex mx-auto w-40"
+          <div
+            class="flex mx-auto justify-center"
           >
-            {{$t('buttons.add')}}
-        </button>
+            <button
+            type="submit"
+            class="bg-green-600 text-light-300 rounded-sm p-4 m-2 w-40 text-center"
+            >
+              {{$t('buttons.add')}}
+            </button>
+          </div>
         </Form>
       </template>
     </Modal>

@@ -64,12 +64,16 @@
                 :value="item.id"
               />
             </div>
-            <button
-            type="submit"
-            class="bg-green-600 text-light-300 rounded-sm p-4 m-2 flex mx-auto w-40"
-          >
-            {{$t('items.add.button')}}
-          </button>
+            <div
+              class="flex mx-auto justify-center"
+            >
+              <button
+                type="submit"
+                class="bg-gray-600 text-light-300 rounded-sm p-4 m-2 w-40 text-center"
+              >
+                {{$t('items.add.button')}}
+              </button>
+            </div>
           </div>
         </Form>
         <div>

@@ -73,12 +73,16 @@
           :label="$t('kitchens.title')"
         />
       </div>
-      <button
-        type="submit"
-        class="bg-green-600 text-light-300 rounded-sm p-4 m-2 flex mx-auto w-40"
+      <div
+        class="flex mx-auto justify-center"
       >
-        {{$t('buttons.add')}}
-      </button>
+        <button
+          type="submit"
+          class="bg-green-600 text-light-300 rounded-sm p-4 m-2 w-40 text-center"
+        >
+          {{$t('buttons.add')}}
+        </button>
+      </div>
     </Form>
   </template>
 
