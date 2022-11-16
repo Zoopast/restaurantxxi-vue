@@ -68,6 +68,17 @@ export default {
       edit: 'Editar menú',
       delete: 'Eliminar menú',
     },
+    new: {
+      title: 'Nuevo menú',
+      name: 'Titulo menú',
+      description: 'Descripción',
+      default: 'Menú por defecto',
+      placeholder: {
+        name: 'Ingresa el nombre del menú',
+        description: 'Ingresa la descripción del menú',
+      },
+      button: 'Crear menú',
+    },
     title: 'Menús',
   },
   recipes: {
@@ -117,6 +128,8 @@ export default {
     back: 'Atrás',
     continue: 'Continuar',
     selectOption: 'Seleccionar opción',
+    yes: 'Si',
+    no: 'No',
   },
   kitchens:{
     title: 'Cocinas',
@@ -131,5 +144,5 @@ export default {
         title: "Items",
       }
     }
-  }
+  },
 }
