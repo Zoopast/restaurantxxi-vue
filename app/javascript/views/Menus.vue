@@ -3,6 +3,8 @@
  import { useI18n } from 'vue-i18n';
  import AddMenuModal from '../components/menus/addMenuModal.vue';
  import showMenuModal from '../components/menus/showMenuModal.vue';
+ import { csrfToken } from '@rails/ujs';
+ import axios from 'axios';
  const { t } = useI18n({});
 
  defineProps({
@@ -17,6 +19,19 @@
  function setIsOpen() {
     isOpen.value = !isOpen.value
   }
+
+ async function deleteMenu(menu_id : string){
+  await axios.delete('/menus/' + menu_id, {
+    headers: {
+        'X-CSRF-Token': csrfToken(),
+      },
+  }).then((response) => {
+    window.location.reload();
+  }).catch((error) => {
+    console.log(error);
+    window.location.reload();
+  });
+ }
 
 </script>
 <template>
@@ -77,6 +92,7 @@
                     class="m-2"
                   >{{t('menus.actions.edit')}}</button>
                   <button
+                    @click="deleteMenu(menu.id)"
                     class="m-2 text-red-600"
                   >{{t('menus.actions.delete')}}</button>
                 </td>
