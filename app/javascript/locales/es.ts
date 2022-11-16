@@ -61,6 +61,15 @@ export default {
   menu:{
     title: 'Menú',
   },
+  menus: {
+    actions: {
+      show: 'Ver menú',
+      add: 'Añadir menú',
+      edit: 'Editar menú',
+      delete: 'Eliminar menú',
+    },
+    title: 'Menús',
+  },
   recipes: {
     title: "Recetas",
     edit: {
