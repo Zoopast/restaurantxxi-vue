@@ -23,8 +23,8 @@
       <div class="fixed inset-0 overflow-y-auto">
         <div class="flex min-h-full items-center justify-center p-4">
         <DialogPanel class="w-full max-w-1/2 rounded bg-white">
-          <DialogTitle class="text-center">
-            <slot name="title" />
+          <DialogTitle class="text-center font-bold text-2xl">
+            <slot name="title"/>
           </DialogTitle>
           <slot name="content" />
         </DialogPanel>
