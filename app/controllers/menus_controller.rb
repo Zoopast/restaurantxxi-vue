@@ -18,7 +18,7 @@ class MenusController < ApplicationController
     if @menu.save
       redirect_to menus_path
     else
-      render :new
+      render 'index'
     end
   end
 
