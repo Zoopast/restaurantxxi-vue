@@ -4,10 +4,15 @@ class TablesController < ApplicationController
     @tables = Table.all
   end
 
+  def show
+    table = {
+      table: @table
+    }
+    render json: table
+  end
+
   def create
     @table = Table.new(table_params)
-
-    binding.pry
 
     if @table.save
       redirect_to tables_path

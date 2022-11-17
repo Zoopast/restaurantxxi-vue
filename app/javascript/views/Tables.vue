@@ -86,6 +86,17 @@
     :open="isOpen"
     @close="setIsOpen"
   />
+  <ShowTableModal
+    :open="show"
+    @close="setShow"
+    :table="table.table"
+  />
+
+  <EditTableModal
+    :open="edit"
+    @close="setEdit"
+    :table="table.table"
+  />
   <div id="menus" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">

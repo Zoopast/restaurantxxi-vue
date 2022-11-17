@@ -133,6 +133,10 @@ export default {
       },
       button: 'Crear mesa',
     },
+    edit: {
+      title: 'Editar mesa',
+      button: 'Editar',
+    },
     actions: {
       show: 'Ver mesa',
       add: 'Añadir mesa',
