@@ -30,9 +30,6 @@ class MenusController < ApplicationController
   def update_menu
     menu = current_menu
     if menu.update!(menu_params)
-
-      binding.pry
-
       redirect_to menus_path
     else
       render json: menu.errors, status: :unprocessable_entity
@@ -46,7 +43,11 @@ class MenusController < ApplicationController
   end
 
   def menu_params
-    params.require(:menu).permit(:name, :description, :default_menu)
+    if params[:menu][:default_menu].present?
+      params.require(:menu).permit(:name, :description, :default_menu)
+    else
+      params.require(:menu).permit(:name, :description).merge(default_menu: false)
+    end
   end
 
   def set_menu
