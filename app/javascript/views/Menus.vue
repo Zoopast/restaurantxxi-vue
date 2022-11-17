@@ -107,16 +107,16 @@
             <thead class="border-b">
               <tr>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                  ID
+                  {{t('menus.id')}}
                 </th>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                  Nombre
+                  {{t('menus.name')}}
                 </th>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                  Menú por defecto
+                  {{t('menus.default')}}
                 </th>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                  Acciones
+                  {{t('actions.title')}}
                 </th>
               </tr>
             </thead>

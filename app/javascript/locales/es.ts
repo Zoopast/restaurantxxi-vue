@@ -62,6 +62,9 @@ export default {
     title: 'Menú',
   },
   menus: {
+    id: 'ID',
+    name: 'Nombre',
+    default: 'Menú por defecto',
     actions: {
       show: 'Ver menú',
       add: 'Añadir menú',
