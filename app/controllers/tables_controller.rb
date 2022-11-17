@@ -6,6 +6,9 @@ class TablesController < ApplicationController
 
   def create
     @table = Table.new(table_params)
+
+    binding.pry
+
     if @table.save
       redirect_to tables_path
     else
@@ -38,6 +41,6 @@ class TablesController < ApplicationController
   end
 
   def table_params
-    params.require(:table).permit(:name, :capacity, :restaurant_id)
+    params.require(:table).permit(:table_number, :seats)
   end
 end

@@ -120,6 +120,25 @@ export default {
   },
   tables: {
     title: "Mesas",
+    table_number: 'Número de mesa',
+    seats_number: 'Cantidad de sillas',
+    reserved_at: 'Reservada',
+    new: {
+      title: 'Nueva mesa',
+      table_number: 'Número de mesa',
+      seats: 'Cantidad de sillas',
+      placeholder: {
+        table_number: 'Ingresa el número de mesa',
+        seats: 'Ingresa la cantidad de sillas',
+      },
+      button: 'Crear mesa',
+    },
+    actions: {
+      show: 'Ver mesa',
+      add: 'Añadir mesa',
+      edit: 'Editar mesa',
+      delete: 'Eliminar mesa',
+    }
   },
   clients: {
     title: "Clientes",
