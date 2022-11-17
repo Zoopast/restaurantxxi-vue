@@ -39,6 +39,16 @@
   }
 
 
+ async function showMenu(menu_id : string) {
+  try{
+    const response = await axios.get(`/menus/${menu_id}`);
+    menu.value = response.data;
+    setShow();
+  }catch(e){
+    console.log(e);
+  }
+ }
+
  async function editMenu(menu_id : string){
   await axios.get('/menus/' + menu_id)
     .then((response) => {
@@ -83,6 +93,12 @@
     @close="setEdit"
     :menu="menu.menu"
   />
+
+  <ShowMenuModal
+    :open="show"
+    @close="setShow"
+    :menu="menu.menu"
+  />
   <div id="menus" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -121,6 +137,7 @@
                 </td>
                 <td>
                   <button
+                    @click="showMenu(menu.id)"
                     class="m-2"
                   >{{t('menus.actions.show')}}</button>
                   <button
