@@ -30,6 +30,20 @@ export default {
       add: 'Añadir cliente',
       edit: 'Editar cliente',
       delete: 'Eliminar cliente',
+    },
+    new: {
+      title: 'Añadir cliente',
+      full_name: 'Nombre completo',
+      email: 'Correo electrónico',
+      password: 'Contraseña',
+      password_confirmation: 'Confirmar contraseña',
+      placeholder: {
+        full_name: 'Ingresa el nombre completo',
+        email: 'Ingresa el correo electrónico',
+        password: 'Ingresa la contraseña',
+        password_confirmation: 'Vuelve a ingresar la contraseña',
+      },
+      button: 'Añadir cliente',
     }
   },
   session: {

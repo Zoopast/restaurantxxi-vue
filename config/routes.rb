@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :clients
   resources :expenses
   resources :recipes
   resources :items
   resources :menus
   resources :tables
-  resources :clients
+  resources :customers
   resources :reservations
   resources :finances
   post 'recipes/update_recipe', to: 'recipes#update_recipe'
@@ -21,5 +20,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords: 'users/passwords'
+  }
+
+  devise_for :clients, controllers: {
+    sessions: 'clients/sessions',
+    registrations: 'clients/registrations',
+    passwords: 'clients/passwords'
   }
 end

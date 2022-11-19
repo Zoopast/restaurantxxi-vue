@@ -1,9 +1,9 @@
 <script setup lang='ts'>
   import { ref } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import AddClientModal from '../components/tables/addTableModal.vue';
-  import ShowClientModal from '../components/tables/showTableModal.vue';
-  import EditClientModal from '../components/tables/editTableModal.vue';
+  import AddClientModal from '../components/clients/addClientModal.vue';
+  import ShowClientModal from '../components/clients/showClientModal.vue';
+  import EditClientModal from '../components/clients/editClientModal.vue';
   import { csrfToken } from '@rails/ujs';
   import axios from 'axios';
 
@@ -85,8 +85,8 @@
     </button>
   </div>
   <AddClientModal
-    :isOpen="isOpen"
-    :setIsOpen="setIsOpen"
+    :open="isOpen"
+    @close="setIsOpen"
   />
   <div id="tables" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">

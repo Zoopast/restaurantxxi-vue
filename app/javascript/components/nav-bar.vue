@@ -35,7 +35,7 @@
       <a href="/menus" class="p-2 nav-item">{{t('menus.title')}}</a>
       <a href="/recipes" class="p-2 nav-item">{{t('recipes.title')}}</a>
       <a href="/tables" class="p-2 nav-item">{{t('tables.title')}}</a>
-      <a href="/clients" class="p-2 nav-item">{{t('clients.title')}}</a>
+      <a href="/customers" class="p-2 nav-item">{{t('clients.title')}}</a>
       <a href="/reservations" class="p-2 nav-item">{{t('reservations.title')}}</a>
       <a href="/finances" class="p-2 nav-item">{{t('finances.title')}}</a>
     </div>
