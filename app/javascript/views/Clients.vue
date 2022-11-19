@@ -1,15 +1,15 @@
 <script setup lang='ts'>
   import { ref } from 'vue';
   import { useI18n } from 'vue-i18n';
-  import AddTableModal from '../components/tables/addTableModal.vue';
-  import ShowTableModal from '../components/tables/showTableModal.vue';
-  import EditTableModal from '../components/tables/editTableModal.vue';
+  import AddClientModal from '../components/tables/addTableModal.vue';
+  import ShowClientModal from '../components/tables/showTableModal.vue';
+  import EditClientModal from '../components/tables/editTableModal.vue';
   import { csrfToken } from '@rails/ujs';
   import axios from 'axios';
 
   const { t } = useI18n({});
   defineProps({
-    tables: {
+    clients: {
       type: Array,
       default: () => [],
     },
@@ -19,12 +19,14 @@
   const edit = ref(false);
   const show = ref(false);
   const table = ref({
-    table: {
-      table_number: 0,
-      seats: 0,
+    client: {
+      fullName: '',
+      password: '',
+      password_confirmation: '',
     }
  });
-  function setIsOpen() {
+
+ function setIsOpen() {
     isOpen.value = !isOpen.value
   }
 
@@ -36,9 +38,10 @@
     edit.value = !edit.value;
   }
 
-  async function showTable(table_id : string) {
+
+  async function showClient(client_id : string) {
   try{
-    const response = await axios.get(`/tables/${table_id}`);
+    const response = await axios.get(`/clients/${client_id}`);
     table.value = response.data;
     setShow();
   }catch(e){
@@ -46,8 +49,8 @@
   }
  }
 
- async function editTable(table_id : string){
-  await axios.get('/tables/' + table_id)
+ async function editClient(client_id : string){
+  await axios.get('/tables/' + client_id)
     .then((response) => {
       table.value = response.data;
       edit.value = true;
@@ -57,8 +60,8 @@
     });
  }
 
- async function deleteTable(table_id : string){
-  await axios.delete('/tables/' + table_id, {
+ async function deleteClient(client_id : string){
+  await axios.delete('/tables/' + client_id, {
     headers: {
         'X-CSRF-Token': csrfToken(),
       },
@@ -71,31 +74,19 @@
  }
 
 </script>
-
 <template>
   <div class="flex flex-col items-center justify-center">
-    <h1 class="text-4xl font-bold">{{t('tables.title')}}</h1>
+    <h1 class="text-4xl font-bold">{{t('clients.title')}}</h1>
     <button
       class="block px-5 py-3 m-2 font-medium text-white bg-green-600 rounded-lg"
       @click="setIsOpen"
     >
-      {{t('tables.actions.add')}}
+      {{t('clients.actions.add')}}
     </button>
   </div>
-  <AddTableModal
-    :open="isOpen"
-    @close="setIsOpen"
-  />
-  <ShowTableModal
-    :open="show"
-    @close="setShow"
-    :table="table.table"
-  />
-
-  <EditTableModal
-    :open="edit"
-    @close="setEdit"
-    :table="table.table"
+  <AddClientModal
+    :isOpen="isOpen"
+    :setIsOpen="setIsOpen"
   />
   <div id="tables" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -105,13 +96,13 @@
             <thead class="border-b">
               <tr>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                  {{t('tables.table_number')}}
+                  {{t('clients.full_name')}}
                 </th>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                  {{t('tables.seats_number')}}
+                  {{t('clients.email')}}
                 </th>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
-                  {{t('tables.reserved_at')}}
+                  {{t('clients.last_visited')}}
                 </th>
                 <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
                   {{t('actions.title')}}
@@ -120,30 +111,21 @@
             </thead>
             <tbody>
               <tr
-                v-for="table in tables"
-                :key="table.id"
+                v-for="client in clients"
+                :key="client.id"
                 class="border-b"
               >
-                <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ table.table_number }}
-                </td>
-                <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ table.seats }}
-                </td>
-                <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ table.reserved_at }}
-                </td>
                 <td>
                   <button
-                    @click="showTable(table.id)"
+                    @click="showClient(client.id)"
                     class="m-2"
                   >{{t('tables.actions.show')}}</button>
                   <button
-                    @click="editTable(table.id)"
+                    @click="editClient(client.id)"
                     class="m-2"
                   >{{t('tables.actions.edit')}}</button>
                   <button
-                    @click="deleteTable(table.id)"
+                    @click="deleteClient(client.id)"
                     class="m-2 text-red-600"
                   >{{t('tables.actions.delete')}}</button>
                 </td>

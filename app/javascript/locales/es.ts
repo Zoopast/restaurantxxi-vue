@@ -19,6 +19,19 @@ export default {
     sign_in: 'Iniciar sesión',
     sign_up: 'Registrarse',
   },
+  clients: {
+    title: 'Clientes',
+    full_name: 'Nombre completo',
+    email: 'Correo electrónico',
+    password: 'Contraseña',
+    password_confirmation: 'Confirmar contraseña',
+    last_visited: 'Última visita',
+    actions: {
+      add: 'Añadir cliente',
+      edit: 'Editar cliente',
+      delete: 'Eliminar cliente',
+    }
+  },
   session: {
     signin: 'Iniciar sesión',
     signout: 'Cerrar sesión',
@@ -143,9 +156,6 @@ export default {
       edit: 'Editar mesa',
       delete: 'Eliminar mesa',
     }
-  },
-  clients: {
-    title: "Clientes",
   },
   reservations: {
     title: "Reservaciones",
