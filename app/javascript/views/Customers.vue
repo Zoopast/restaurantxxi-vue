@@ -41,7 +41,7 @@
 
   async function showClient(client_id : string) {
     try{
-      const response = await axios.get(`/clients/${client_id}`);
+      const response = await axios.get(`/customers/${client_id}`);
       client.value = response.data;
       setShow();
     }catch(e){
@@ -91,6 +91,11 @@
   <EditClientModal
     :open="edit"
     @close="setEdit"
+    :client="client.client"
+  />
+  <ShowClientModal
+    :open="show"
+    @close="setShow"
     :client="client.client"
   />
   <div id="tables" class="min-w-full">
