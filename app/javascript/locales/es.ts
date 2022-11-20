@@ -26,7 +26,9 @@ export default {
     password: 'Contraseña',
     password_confirmation: 'Confirmar contraseña',
     last_visited: 'Última visita',
+    never_visited: 'Nunca visitado',
     actions: {
+      show: 'Ver cliente',
       add: 'Añadir cliente',
       edit: 'Editar cliente',
       delete: 'Eliminar cliente',
