@@ -18,7 +18,7 @@
   const isOpen = ref(false);
   const edit = ref(false);
   const show = ref(false);
-  const table = ref({
+  const client = ref({
     client: {
       fullName: '',
       password: '',
@@ -42,7 +42,7 @@
   async function showClient(client_id : string) {
     try{
       const response = await axios.get(`/clients/${client_id}`);
-      table.value = response.data;
+      client.value = response.data;
       setShow();
     }catch(e){
       console.log(e);
@@ -50,9 +50,9 @@
   }
 
  async function editClient(client_id : string){
-  await axios.get('/tables/' + client_id)
+  await axios.get('/customers/' + client_id)
     .then((response) => {
-      table.value = response.data;
+      client.value = response.data;
       edit.value = true;
     })
     .catch((err) => {
@@ -87,6 +87,11 @@
   <AddClientModal
     :open="isOpen"
     @close="setIsOpen"
+  />
+  <EditClientModal
+    :open="edit"
+    @close="setEdit"
+    :client="client.client"
   />
   <div id="tables" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">

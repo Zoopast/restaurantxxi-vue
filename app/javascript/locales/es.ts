@@ -46,6 +46,10 @@ export default {
         password_confirmation: 'Vuelve a ingresar la contraseña',
       },
       button: 'Añadir cliente',
+    },
+    edit: {
+      title: 'Editar cliente',
+      button: 'Editar cliente',
     }
   },
   session: {

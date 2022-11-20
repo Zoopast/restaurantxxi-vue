@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'items/add_stock', to: 'items#add_stock'
   post 'menus/update_menu', to: 'menus#update_menu'
   post 'tables/update_table', to: 'tables#update_table'
+  post 'customers/update_customer', to: 'customers#update_customer'
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -3,6 +3,14 @@ class CustomersController < ApplicationController
     @clients = Client.all
   end
 
+  def show
+    @client = Client.find(params[:id])
+    client = {
+      client: @client
+    }
+    render json: client
+  end
+
   def destroy
     @client = Client.find(params[:id])
     @client.destroy
@@ -10,9 +18,6 @@ class CustomersController < ApplicationController
   end
 
   def update_customer
-
-    binding.pry
-
     @client = Client.find(params[:id])
     if @client.update!(client_params)
       redirect_to customers_path
