@@ -188,6 +188,18 @@ export default {
       add: 'Añadir reserva',
       edit: 'Editar reserva',
       delete: 'Eliminar reserva',
+    },
+    new: {
+      table: 'Mesa',
+      client: 'Cliente',
+      reservation_datetime: 'Fecha y hora de la reservación',
+      number_of_people: 'Cantidad de personas',
+      placeholder: {
+        table: 'Selecciona la mesa',
+        client: 'Selecciona el cliente',
+        reservation_datetime: 'Selecciona la fecha y hora de la reservación',
+        number_of_people: 'Ingresa la cantidad de personas',
+      },
     }
   },
   finances: {

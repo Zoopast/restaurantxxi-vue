@@ -7,6 +7,9 @@
 #  status               :integer
 #  created_at           :datetime         not null
 #  updated_at           :datetime         not null
+#  number_of_people     :integer          not null
+#  client_id            :integer          not null
+#  table_id             :integer          not null
 #
 require 'rails_helper'
 

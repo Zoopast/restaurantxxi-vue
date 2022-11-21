@@ -1,7 +1,7 @@
 <reservations-view
   :reservations="<%= @reservations.to_json %>"
-  :clients="<%= @clients.to_json %>"
-  :tables="<%= @tables.to_json %>"
+  :clients="<%= clients_for_select %>"
+  :tables="<%= tables_for_select %>"
 >
 
 </reservations-view>
