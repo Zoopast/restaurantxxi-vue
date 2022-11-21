@@ -4,13 +4,18 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    binding.pry
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
       redirect_to reservations_path
     else
       render '/reservations'
     end
+  end
+
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    redirect_to reservations_path
   end
 
   private
