@@ -100,8 +100,8 @@
   />
   <ShowReservationModal
     :open="show"
-    @close="setIsOpen"
-    :reservation="reservation"
+    @close="setShow"
+    :reservation="reservation.reservation"
   />
   <EditReservationModal
     :open="edit"
