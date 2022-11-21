@@ -178,7 +178,17 @@ export default {
     }
   },
   reservations: {
+    id: 'ID',
     title: "Reservaciones",
+    reservation_datetime: 'Fecha y hora de la reservación',
+    client: 'Cliente',
+    status: 'Estado',
+    actions: {
+      show: 'Ver reserva',
+      add: 'Añadir reserva',
+      edit: 'Editar reserva',
+      delete: 'Eliminar reserva',
+    }
   },
   finances: {
     title: "Finanzas",
