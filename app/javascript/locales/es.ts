@@ -26,7 +26,9 @@ export default {
     password: 'Contraseña',
     password_confirmation: 'Confirmar contraseña',
     last_visited: 'Última visita',
+    never_visited: 'Nunca visitado',
     actions: {
+      show: 'Ver cliente',
       add: 'Añadir cliente',
       edit: 'Editar cliente',
       delete: 'Eliminar cliente',
@@ -44,6 +46,10 @@ export default {
         password_confirmation: 'Vuelve a ingresar la contraseña',
       },
       button: 'Añadir cliente',
+    },
+    edit: {
+      title: 'Editar cliente',
+      button: 'Editar cliente',
     }
   },
   session: {
@@ -172,7 +178,29 @@ export default {
     }
   },
   reservations: {
+    id: 'ID',
     title: "Reservaciones",
+    reservation_datetime: 'Fecha y hora de la reservación',
+    client: 'Cliente',
+    status: 'Estado',
+    actions: {
+      show: 'Ver reserva',
+      add: 'Añadir reserva',
+      edit: 'Editar reserva',
+      delete: 'Eliminar reserva',
+    },
+    new: {
+      table: 'Mesa',
+      client: 'Cliente',
+      reservation_datetime: 'Fecha y hora de la reservación',
+      number_of_people: 'Cantidad de personas',
+      placeholder: {
+        table: 'Selecciona la mesa',
+        client: 'Selecciona el cliente',
+        reservation_datetime: 'Selecciona la fecha y hora de la reservación',
+        number_of_people: 'Ingresa la cantidad de personas',
+      },
+    }
   },
   finances: {
     title: "Finanzas",

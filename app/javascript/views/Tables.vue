@@ -121,29 +121,29 @@
             <tbody>
               <tr
                 v-for="table in tables"
-                :key="table.id"
+                :key="table['id']"
                 class="border-b"
               >
                 <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ table.table_number }}
+                  {{ table['table_number'] }}
                 </td>
                 <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ table.seats }}
+                  {{ table['seats'] }}
                 </td>
                 <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ table.reserved_at }}
+                  {{ table['reserved_at'] }}
                 </td>
                 <td>
                   <button
-                    @click="showTable(table.id)"
+                    @click="showTable(table['id'])"
                     class="m-2"
                   >{{t('tables.actions.show')}}</button>
                   <button
-                    @click="editTable(table.id)"
+                    @click="editTable(table['id'])"
                     class="m-2"
                   >{{t('tables.actions.edit')}}</button>
                   <button
-                    @click="deleteTable(table.id)"
+                    @click="deleteTable(table['id'])"
                     class="m-2 text-red-600"
                   >{{t('tables.actions.delete')}}</button>
                 </td>

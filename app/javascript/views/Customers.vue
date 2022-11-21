@@ -18,7 +18,7 @@
   const isOpen = ref(false);
   const edit = ref(false);
   const show = ref(false);
-  const table = ref({
+  const client = ref({
     client: {
       fullName: '',
       password: '',
@@ -26,7 +26,7 @@
     }
  });
 
- function setIsOpen() {
+  function setIsOpen() {
     isOpen.value = !isOpen.value
   }
 
@@ -40,19 +40,19 @@
 
 
   async function showClient(client_id : string) {
-  try{
-    const response = await axios.get(`/clients/${client_id}`);
-    table.value = response.data;
-    setShow();
-  }catch(e){
-    console.log(e);
+    try{
+      const response = await axios.get(`/customers/${client_id}`);
+      client.value = response.data;
+      setShow();
+    }catch(e){
+      console.log(e);
+    }
   }
- }
 
  async function editClient(client_id : string){
-  await axios.get('/tables/' + client_id)
+  await axios.get('/customers/' + client_id)
     .then((response) => {
-      table.value = response.data;
+      client.value = response.data;
       edit.value = true;
     })
     .catch((err) => {
@@ -61,7 +61,7 @@
  }
 
  async function deleteClient(client_id : string){
-  await axios.delete('/tables/' + client_id, {
+  await axios.delete('/customers/' + client_id, {
     headers: {
         'X-CSRF-Token': csrfToken(),
       },
@@ -88,6 +88,16 @@
     :open="isOpen"
     @close="setIsOpen"
   />
+  <EditClientModal
+    :open="edit"
+    @close="setEdit"
+    :client="client.client"
+  />
+  <ShowClientModal
+    :open="show"
+    @close="setShow"
+    :client="client.client"
+  />
   <div id="tables" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
@@ -112,22 +122,31 @@
             <tbody>
               <tr
                 v-for="client in clients"
-                :key="client.id"
-                class="border-b"
+                :key="client['id']"
+                class="border-b "
               >
+                <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
+                  {{client['full_name']}}
+                </td>
+                <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
+                  {{client['email']}}
+                </td>
+                <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
+                  {{client['last_visited'] ?? t('clients.never_visited')}}
+                </td>
                 <td>
                   <button
-                    @click="showClient(client.id)"
+                    @click="showClient(client['id'])"
                     class="m-2"
-                  >{{t('tables.actions.show')}}</button>
+                  >{{t('clients.actions.show')}}</button>
                   <button
-                    @click="editClient(client.id)"
+                    @click="editClient(client['id'])"
                     class="m-2"
-                  >{{t('tables.actions.edit')}}</button>
+                  >{{t('clients.actions.edit')}}</button>
                   <button
-                    @click="deleteClient(client.id)"
+                    @click="deleteClient(client['id'])"
                     class="m-2 text-red-600"
-                  >{{t('tables.actions.delete')}}</button>
+                  >{{t('clients.actions.delete')}}</button>
                 </td>
               </tr>
             </tbody>
