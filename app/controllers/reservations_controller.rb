@@ -3,6 +3,14 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
   end
 
+  def show
+    @reservation = Reservation.find(params[:id])
+    reservation = {
+      reservation: @reservation
+    }
+    render json: reservation
+  end
+
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
@@ -10,6 +18,12 @@ class ReservationsController < ApplicationController
     else
       render '/reservations'
     end
+  end
+
+  def update_reservation
+    @reservation = Reservation.find(params[:id])
+    @reservation.update(reservation_params)
+    redirect_to reservations_path
   end
 
   def destroy

@@ -200,6 +200,10 @@ export default {
         reservation_datetime: 'Selecciona la fecha y hora de la reservación',
         number_of_people: 'Ingresa la cantidad de personas',
       },
+    },
+    edit: {
+      title: 'Editar reserva',
+      button: 'Editar',
     }
   },
   finances: {
