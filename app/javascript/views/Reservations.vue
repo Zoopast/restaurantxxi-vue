@@ -100,14 +100,15 @@
   />
   <ShowReservationModal
     :open="show"
-    @close="setIsOpen"
-    :reservation="reservation"
+    @close="setShow"
+    :reservation="reservation.reservation"
   />
   <EditReservationModal
     :open="edit"
-    @close="setIsOpen"
+    @close="setEdit"
     :clients="clients"
     :tables="tables"
+    :reservation="reservation.reservation"
   />
   <div id="tables" class="min-w-full">
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'menus/update_menu', to: 'menus#update_menu'
   post 'tables/update_table', to: 'tables#update_table'
   post 'customers/update_customer', to: 'customers#update_customer'
+  post 'reservations/update_reservation', to: 'reservations#update_reservation'
   root 'home#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
