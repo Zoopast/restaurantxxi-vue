@@ -177,6 +177,9 @@ export default {
       delete: 'Eliminar mesa',
     }
   },
+  reservation: {
+    title: 'Reserva',
+  },
   reservations: {
     id: 'ID',
     title: "Reservaciones",

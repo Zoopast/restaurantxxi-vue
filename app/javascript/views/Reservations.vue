@@ -8,7 +8,7 @@
   import axios from 'axios';
 
   const { t } = useI18n({});
-  defineProps({
+  const props = defineProps({
     reservations: {
       type: Array,
       default: () => [],
