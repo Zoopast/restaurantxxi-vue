@@ -4,11 +4,12 @@
   import AddReservationModal from '../components/reservations/addReservationModal.vue';
   import ShowReservationModal from '../components/reservations/showReservationModal.vue';
   import EditReservationModal from '../components/reservations/editReservationModal.vue';
+  import { formatDate, formatTime } from '../utils/timezones';
   import { csrfToken } from '@rails/ujs';
   import axios from 'axios';
 
   const { t } = useI18n({});
-  defineProps({
+  const props = defineProps({
     reservations: {
       type: Array,
       default: () => [],
@@ -81,6 +82,10 @@
     window.location.reload();
   });
  }
+
+ function formatDatetimes(datetime : any){
+  return formatDate({date: datetime}) + ' ' + formatTime({date: datetime});
+ }
 </script>
 <template>
   <div class="flex flex-col items-center justify-center">
@@ -144,13 +149,13 @@
                   {{ reservation['id'] }}
                 </td>
                 <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ reservation['reservation_datetime'] }}
+                  {{ formatDatetimes(reservation['reservation_datetime']) }}
                 </td>
                 <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
                   {{ reservation['client_id'] }}
                 </td>
                 <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
-                  {{ reservation['status'] }}
+                  {{ t('reservations.statuses.' + reservation['status']) }}
                 </td>
                 <td>
                   <button

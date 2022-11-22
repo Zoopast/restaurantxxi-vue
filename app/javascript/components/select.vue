@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref } from 'vue';
   import {
     Listbox,
     ListboxButton,
@@ -42,7 +42,7 @@
         v-slot="{value}"
         class="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md border"
       >
-        {{ value }}
+        {{ value['label'] }}
       </ListboxButton>
       <ListboxOptions>
         <ListboxOption
@@ -50,7 +50,7 @@
           :key="idx"
           :value="option"
         >
-          {{ option }}
+          {{ option['label'] }}
         </ListboxOption>
       </ListboxOptions>
   </Listbox>

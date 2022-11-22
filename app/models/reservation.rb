@@ -12,4 +12,5 @@
 #  table_id             :integer          not null
 #
 class Reservation < ApplicationRecord
+  enum :status, %i[active finished cancelled filed scheduled]
 end
