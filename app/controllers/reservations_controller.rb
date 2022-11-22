@@ -12,9 +12,6 @@ class ReservationsController < ApplicationController
   end
 
   def create
-
-    binding.pry
-
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
       redirect_to reservations_path
