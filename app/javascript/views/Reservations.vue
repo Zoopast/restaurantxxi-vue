@@ -81,6 +81,24 @@
     window.location.reload();
   });
  }
+
+ function formatTables(){
+  return props.tables.map((table : any) => {
+    return {
+      value: table,
+      label: t('table') + ' ' + table,
+    }
+  })
+ }
+
+ function formatArray(array : any){
+  return array.map((item : any) => {
+    return {
+      value: item,
+      label: item,
+    }
+  })
+ }
 </script>
 <template>
   <div class="flex flex-col items-center justify-center">

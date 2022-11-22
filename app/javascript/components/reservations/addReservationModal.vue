@@ -8,7 +8,7 @@
   import Toggle from '../toggle.vue';
   import Select from '../select.vue';
 
-  defineProps({
+  const props = defineProps({
     clients: {
       type: Array,
       required: true
@@ -21,8 +21,16 @@
 
   const { t } = useI18n({});
   const isOpen = ref(false);
-  const selectedClient = ref(null);
-  const selectedTable = ref(null);
+  const selectedClient = ref(props.clients[0]);
+  const selectedTable = ref(props.tables[0]);
+  const statuses = reactive([
+    {value: 'active', label: t('reservations.statuses.active')},
+    {value: 'finished', label: t('reservations.statuses.finished')},
+    {value: 'cancelled', label: t('reservations.statuses.cancelled')},
+    {value: 'filed', label: t('reservations.statuses.filed')},
+    {value: 'scheduled', label: t('reservations.statuses.scheduled')},
+  ]);
+  const selectedStatus = ref(statuses[0]);
 
   function setIsOpen()
   {
@@ -45,13 +53,11 @@
         >
           <csrfInput />
           <Select
-            name="reservation[table_id]"
             v-model="selectedTable"
             :options="tables"
             :label="$t('reservations.new.table')"
           />
           <Select
-            name="reservation[client_id]"
             v-model="selectedClient"
             :options="clients"
             :label="$t('reservations.new.client')"
@@ -66,6 +72,26 @@
             name="reservation[reservation_datetime]"
             type="datetime-local"
             :label="$t('reservations.new.reservation_datetime')"
+          />
+          <Select
+            v-model="selectedStatus"
+            :options="statuses"
+            :label="$t('reservations.new.status')"
+          />
+          <input
+            type="hidden"
+            name="reservation[status]"
+            :value="selectedStatus?.value"
+          />
+          <input
+            type="hidden"
+            name="reservation[client_id]"
+            :value="selectedClient?.value"
+          />
+          <input
+            type="hidden"
+            name="reservation[table_id]"
+            :value="selectedTable?.value"
           />
           <div
             class="flex mx-auto justify-center"

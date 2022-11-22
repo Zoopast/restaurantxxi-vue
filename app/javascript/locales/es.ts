@@ -179,6 +179,28 @@ export default {
   },
   reservation: {
     title: 'Reserva',
+    table: {
+      title: 'Mesa',
+      number: 'Número',
+      seats: 'Cantidad de sillas',
+    },
+    client: {
+      title: 'Cliente',
+      full_name: 'Nombre completo',
+      email: 'Correo electrónico',
+    },
+    information: {
+      title: 'Información',
+      datetime: 'Fecha y hora',
+      status: 'Estado',
+      number_of_people: 'Cantidad de personas',
+      date: 'Fecha',
+      time: 'Hora',
+    },
+    table_number: 'Número de mesa',
+    seats: 'Cantidad de sillas',
+    reservation_datetime: 'Fecha y hora de reserva',
+    number_of_people: 'Cantidad de personas',
   },
   reservations: {
     id: 'ID',
@@ -192,11 +214,19 @@ export default {
       edit: 'Editar reserva',
       delete: 'Eliminar reserva',
     },
+    statuses: {
+      active: 'Activa',
+      cancelled: 'Cancelada',
+      finished: 'Finalizada',
+      filed:'Archivada',
+      scheduled: 'Agendada',
+    },
     new: {
       table: 'Mesa',
       client: 'Cliente',
       reservation_datetime: 'Fecha y hora de la reservación',
       number_of_people: 'Cantidad de personas',
+      status: 'Estado',
       placeholder: {
         table: 'Selecciona la mesa',
         client: 'Selecciona el cliente',
