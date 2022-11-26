@@ -268,6 +268,11 @@ export default {
     no: 'No',
   },
   kitchens:{
+    orders:{
+      active_orders: {
+        title: 'Pedidos activos',
+      }
+    },
     title: 'Cocinas',
   },
   expenses: {
