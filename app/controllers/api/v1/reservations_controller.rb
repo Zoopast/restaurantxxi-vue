@@ -29,7 +29,21 @@ class Api::V1::ReservationsController < ApplicationController
 
   def update
     if @reservation.update(reservation_params)
-      render json: @reservation
+      if params[:reservation][:status] == 'finished'
+        transaction = Transaction.new transaction_type: 'income', date: Time.now
+        if transaction.save
+          bill = Bill.new amount: @reservation.order.total, client_id: @reservation.client_id, transaction_id: transaction.id
+          if bill.save
+            render json: @reservation
+          else
+            render json: bill.errors, status: :unprocessable_entity
+          end
+        else
+          render json: transaction.errors, status: :unprocessable_entity
+        end
+      else
+        render json: @reservation
+      end
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end

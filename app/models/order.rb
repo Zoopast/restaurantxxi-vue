@@ -11,6 +11,11 @@
 #  updated_at     :datetime         not null
 #
 class Order < ApplicationRecord
+
+  def total
+    products.sum(:price)
+  end
+
   belongs_to :client
   has_many :products
   belongs_to :reservation
