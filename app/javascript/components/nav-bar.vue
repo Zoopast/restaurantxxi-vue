@@ -49,7 +49,6 @@
   <div class="p-2 h-12 flex flex-row items-center justify-between text-gray-500 bg-gray-100 hover:text-gray-700 focus:text-gray-700">
     <div>
       <a href="/">RestaurantXXI</a>
-      {{userRoles}}
     </div>
     <div class="">
       <a
@@ -69,6 +68,12 @@
         href="/recipes" class="p-2 nav-item"
       >
         {{t('recipes.title')}}
+      </a>
+      <a
+        v-if="userHasRole(['admin', 'kitchen'])"
+        href="/kitchens" class="p-2 nav-item"
+      >
+        {{t('orders.title')}}
       </a>
       <a
         v-if="userHasRole(['admin'])"
