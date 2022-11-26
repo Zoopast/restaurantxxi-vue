@@ -54,6 +54,10 @@ GEM
     activerecord (7.0.4)
       activemodel (= 7.0.4)
       activesupport (= 7.0.4)
+    activerecord-oracle_enhanced-adapter (7.0.2)
+      activerecord (~> 7.0.0)
+      ruby-oci8
+      ruby-plsql (>= 0.6.0)
     activestorage (7.0.4)
       actionpack (= 7.0.4)
       activejob (= 7.0.4)
@@ -226,6 +230,8 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    ruby-oci8 (2.2.11)
+    ruby-plsql (0.8.0)
     rubyzip (2.3.2)
     selenium-webdriver (4.5.0)
       childprocess (>= 0.5, < 5.0)
@@ -285,6 +291,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-oracle_enhanced-adapter (~> 7.0.0)
   annotate
   bootsnap
   capybara
