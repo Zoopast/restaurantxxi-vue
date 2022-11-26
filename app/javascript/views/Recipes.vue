@@ -22,6 +22,10 @@
       type: Array,
       default: () => []
     },
+    measurements: {
+      type: Array,
+      default: () => []
+    },
   })
 
   const recipe = ref({
@@ -128,6 +132,7 @@
       :menus="menus"
       :kitchens="kitchens"
       :recipes="recipes"
+      :measurements="measurements"
     />
 
     <ShowRecipeModal

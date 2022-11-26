@@ -20,7 +20,11 @@
       type: Array,
       default: () => []
     },
-  })
+    measurements: {
+      type: Array,
+      default: () => []
+    },
+  });
 
   const isOpen = ref(false);
   const selectedMenu = ref(props.menus[0]);
@@ -105,6 +109,11 @@
                 type="text"
                 v-bind:label="$t('recipes.new.ingredients.unit')"
                 :placeholder="$t('recipes.new.placeholder.unit')"
+              />
+              <Select
+                :id="`measurement_${idx}`"
+                :label="$t('recipes.new.ingredients.unit')"
+                :options="measurements"
               />
               <button
                 v-if="ingredients.length > 1 && (idx + 1) === ingredients.length"
