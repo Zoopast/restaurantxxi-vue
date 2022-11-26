@@ -3,7 +3,7 @@
 # Table name: expense_items
 #
 #  id         :integer          not null, primary key
-#  name       :string           not null
+#  name       :string(255)      not null
 #  price      :integer          not null
 #  quantity   :integer          not null
 #  created_at :datetime         not null
