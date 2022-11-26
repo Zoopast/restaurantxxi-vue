@@ -25,6 +25,9 @@
     <div id="app">
       <nav-bar
         :current-user="<%= current_user.to_json %>"
+        <% if current_user %>
+        :user-roles="<%= current_user.roles.to_json only: [:name] %>"
+        <% end %>
       ></nav-bar>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
