@@ -76,6 +76,12 @@
             :label="$t('recipes.new.description')"
             :placeholder="$t('recipes.new.placeholder.description')"
           />
+          <TextInput
+            name="recipe[price]"
+            type="number"
+            v-bind:label="$t('recipes.new.price')"
+            :placeholder="$t('recipes.new.price')"
+          />
           <div
             class="m-2"
           >
@@ -89,7 +95,7 @@
             >
               <legend>{{$t('recipes.new.ingredients.subtitle')}} {{ idx + 1 }}</legend>
               <div class="grid grid-cols-5">
-                <TextInput
+              <TextInput
                 :id="`name_${idx}`"
                 :name="`ingredients[${idx}][name]`"
                 type="text"
