@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :customers
   resources :reservations
   resources :finances
+  resources :kitchens
+  resources :inventories
   post 'recipes/update_recipe', to: 'recipes#update_recipe'
   post 'items/add_stock', to: 'items#add_stock'
   post 'menus/update_menu', to: 'menus#update_menu'

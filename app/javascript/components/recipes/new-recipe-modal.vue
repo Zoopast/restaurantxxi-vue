@@ -7,7 +7,7 @@
   import csrfInput from '../csrf-input.vue';
   import Select from '../select.vue';
 
-  defineProps({
+  const props = defineProps({
     menus: {
       type: Array,
       default: () => []
@@ -23,8 +23,8 @@
   })
 
   const isOpen = ref(false);
-  const selectedMenu = ref(null);
-  const selectedKitchen = ref(null);
+  const selectedMenu = ref(props.menus[0]);
+  const selectedKitchen = ref(props.kitchens[0]);
   const submitted = ref(false);
   const { t } = useI18n({});
 
@@ -127,16 +127,24 @@
           </div>
           <div class="flex flex-row m-2">
             <Select
-              name="recipe[menu_id]"
               v-model="selectedMenu"
               :options="menus"
               :label="$t('menu.title')"
             />
             <Select
-              name="recipe[kitchen_id]"
               v-model="selectedKitchen"
               :options="kitchens"
               :label="$t('kitchens.title')"
+            />
+            <input
+              type="hidden"
+              name="recipe[menu_id]"
+              :value="selectedMenu.value"
+            />
+            <input
+              type="hidden"
+              name="recipe[kitchen_id]"
+              :value="selectedKitchen.value"
             />
           </div>
           <div

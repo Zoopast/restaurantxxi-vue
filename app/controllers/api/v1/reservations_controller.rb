@@ -4,24 +4,42 @@ class Api::V1::ReservationsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    @reservations = Reservation.all
+    @reservations = Reservation.where(client_id: params[:client_id])
     render json: @reservations
   end
 
   def show
-    @reservation = Reservation.find(params[:id])
-    render json: @reservation
+    products = @reservation&.order&.products&.map do |product|
+      # find recipe on product
+      recipe = Recipe.find(product.recipe_id)
+    end
+    data = { reservation: @reservation, order: @reservation.order, products: products}
+    render json: data
   end
 
   def create
-    @reservation = Reservation.create(reservation_params)
-    render json: @reservation
+    @reservation = Reservation.new(reservation_params)
+
+    if @reservation.save
+
+      binding.pry
+      render json: @reservation, status: :created, location: api_v1_reservations_url(@reservation)
+    else
+      render json: @reservation.errors, status: :unprocessable_entity
+    end
   end
 
+  def update
+    if @reservation.update(reservation_params)
+      render json: @reservation
+    else
+      render json: @reservation.errors, status: :unprocessable_entity
+    end
+  end
   private
 
   def reservation_params
-    params.require(:reservation).permit(:client_id, :table_id, :reservation_datetime, :number_of_people, :status)
+    params.require(:reservation).permit(:reservation_datetime, :status, :client_id, :table_id)
   end
 
   def set_reservation
