@@ -286,4 +286,7 @@ export default {
       }
     }
   },
+  orders: {
+    title: "Pedidos",
+  }
 }
