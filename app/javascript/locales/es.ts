@@ -241,6 +241,23 @@ export default {
   },
   finances: {
     title: "Finanzas",
+    incomes: {
+      title: "Ingresos",
+    },
+    expenses:{
+      title: "Gastos",
+      expense: {
+        id: 'ID',
+        title: "Gasto",
+        amount: "Monto",
+        description: "Descripción",
+        date: "Fecha",
+
+      }
+    },
+    revenue: 'Ingresos',
+    totalExpenses: 'Gastos totales',
+    totalIncomes: 'Ingresos totales',
   },
   actions: {
     title: "Acciones",
