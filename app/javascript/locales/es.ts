@@ -130,12 +130,14 @@ export default {
       title: "Nueva receta",
       name: "Nombre de la receta",
       description: "Descripción",
+      price: 'Precio',
       preparation: "Preparación",
       placeholder: {
         name: "Nombre de la receta",
         description: "Descripción de la receta",
         quantity: "Cantidad del ingrediente",
         unit: 'Unidad de medida',
+        price: 'Precio de la receta',
       },
       ingredients: {
         title: "Ingredientes",

@@ -3,9 +3,9 @@
 # Table name: ingredients
 #
 #  id         :integer          not null, primary key
-#  name       :string
+#  name       :string(255)
 #  qty        :float
-#  unit       :string           default(""), not null
+#  unit       :string(255)      default(""), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  recipe_id  :integer          not null

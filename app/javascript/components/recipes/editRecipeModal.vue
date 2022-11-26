@@ -76,6 +76,13 @@
             v-bind:label="$t('recipes.new.description')"
             :placeholder="$t('recipes.new.placeholder.description')"
           />
+          <TextInput
+            name="recipe[price]"
+            type="number"
+            :value="recipe.price"
+            v-bind:label="$t('recipes.new.price')"
+            :placeholder="$t('recipes.new.price')"
+          />
           <div
             class="m-2"
           >
