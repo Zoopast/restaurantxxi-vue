@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_26_123823) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_135637) do
   create_table "clients", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -124,6 +124,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_123823) do
     t.integer "menu_id", precision: 38, null: false
     t.integer "kitchen_id", precision: 38
     t.string "description"
+    t.integer "price", precision: 38, default: 0, null: false
     t.index ["kitchen_id"], name: "index_recipes_on_kitchen_id"
     t.index ["menu_id"], name: "index_recipes_on_menu_id"
   end
@@ -144,6 +145,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_123823) do
     t.datetime "reserved_at"
     t.integer "seats", precision: 38
     t.integer "table_number", precision: 38
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.integer "measurement", precision: 38
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
