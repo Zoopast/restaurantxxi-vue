@@ -12,5 +12,8 @@
 #  table_id             :integer          not null
 #
 class Reservation < ApplicationRecord
+  belongs_to :client
+  belongs_to :table
   enum :status, %i[active finished cancelled filed scheduled]
+  has_one :order
 end

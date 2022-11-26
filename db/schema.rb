@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_26_144627) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_26_203215) do
+  create_table "bills", force: :cascade do |t|
+    t.integer "amount", precision: 38
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "client_id", precision: 38, null: false
+    t.integer "transaction_id", precision: 38, null: false
+    t.index ["client_id"], name: "index_bills_on_client_id"
+    t.index ["transaction_id"], name: "index_bills_on_transaction_id"
+  end
+
   create_table "clients", force: :cascade do |t|
     t.string "full_name"
     t.string "email"
@@ -112,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_144627) do
     t.integer "recipe_id", precision: 38, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "bill_id", precision: 38
+    t.index ["bill_id"], name: "index_products_on_bill_id"
     t.index ["order_id"], name: "index_products_on_order_id"
     t.index ["recipe_id"], name: "index_products_on_recipe_id"
   end
@@ -160,6 +172,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_144627) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.datetime "date", default: "2022-11-26 20:32:33", null: false
+    t.integer "transaction_type", precision: 38, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "units", force: :cascade do |t|
     t.integer "measurement", precision: 38
     t.datetime "created_at", null: false
@@ -187,6 +206,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_144627) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "bills", "clients"
+  add_foreign_key "bills", "transactions"
   add_foreign_key "expense_items", "expenses"
   add_foreign_key "ingredients", "recipes"
   add_foreign_key "items", "inventories"

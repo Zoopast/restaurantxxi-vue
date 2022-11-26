@@ -7,6 +7,7 @@
 #  recipe_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  bill_id    :integer
 #
 class Product < ApplicationRecord
   has_one :recipe

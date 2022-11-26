@@ -10,4 +10,7 @@
 #  updated_at   :datetime         not null
 #
 class Table < ApplicationRecord
+  has_many :reservations
+
+  validates :table_number, uniqueness: true
 end
