@@ -7,7 +7,7 @@
   import TextInput from '../text-input.vue';
   import csrfInput from '../csrf-input.vue';
 
-  defineProps({
+  const props = defineProps({
     kitchens: {
       type: Array,
       default: () => []
@@ -19,8 +19,8 @@
   });
 
   const isOpen = ref(true);
-  const selectedInventory = ref(null);
-  const selectedKitchen = ref(null);
+  const selectedInventory = ref(props.inventories[0]);
+  const selectedKitchen = ref(props.kitchens[0]);
   function setIsOpen()
   {
     isOpen.value = !isOpen.value;
@@ -61,16 +61,24 @@
       />
       <div class="flex flex-row m-2">
         <Select
-          name="item[inventory_id]"
           v-model="selectedInventory"
           :options="inventories"
           :label="$t('inventory.title')"
         />
         <Select
-          name="item[kitchen_id]"
           v-model="selectedKitchen"
           :options="kitchens"
           :label="$t('kitchens.title')"
+        />
+        <input
+          type="hidden"
+          name="item[inventory_id]"
+          :value="selectedInventory.value"
+        />
+        <input
+          type="hidden"
+          name="item[kitchen_id]"
+          :value="selectedKitchen.value"
         />
       </div>
       <div

@@ -1,6 +1,6 @@
 <recipes-view
-  :menus = "<%= menus_for_select %>"
-  :kitchens = "<%= kitchens_for_select %>"
+  :menus = "<%= menus_for_select.to_json %>"
+  :kitchens = "<%= kitchens_for_select.to_json %>"
   :recipes = "<%= @recipes.to_json %>"
 >
 </recipes-view>
