@@ -85,3 +85,5 @@ gem "rack-cors", "~> 1.1"
 gem "pry", "~> 0.14.1"
 
 gem "pry-byebug", "~> 3.10"
+
+gem "rolify", "~> 6.0"
