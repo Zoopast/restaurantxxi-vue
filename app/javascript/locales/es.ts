@@ -273,6 +273,10 @@ export default {
     orders:{
       active_orders: {
         title: 'Pedidos activos',
+        order_number: 'Número de pedido',
+        time_passed: 'Tiempo de pedido en espera',
+        ready: 'Listo',
+        finish: 'Marcar como listo',
       }
     },
     title: 'Cocinas',
@@ -290,5 +294,8 @@ export default {
   },
   orders: {
     title: "Pedidos",
+  },
+  time: {
+    minutes: 'minutos',
   }
 }

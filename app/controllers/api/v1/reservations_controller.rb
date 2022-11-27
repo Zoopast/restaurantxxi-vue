@@ -11,7 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
   def show
     products = @reservation&.order&.products&.map do |product|
       # find recipe on product
-      recipe = Recipe.find(product.recipe_id)
+      {recipe: Recipe.find(product.recipe_id), status: product.status}
     end
     data = { reservation: @reservation, order: @reservation.order, products: products}
     render json: data
