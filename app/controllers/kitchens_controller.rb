@@ -4,6 +4,7 @@ class KitchensController < ApplicationController
 
   def index
     @orders = Order.all
+    @active_orders = Product.where(status: 0)
   end
 
   def create
