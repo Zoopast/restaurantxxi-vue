@@ -10,6 +10,8 @@
 #  bill_id    :integer
 #
 class Product < ApplicationRecord
-  has_one :recipe
+  belongs_to :recipe
   belongs_to :order
+
+  enum :status, %i[ordered ready delivered]
 end

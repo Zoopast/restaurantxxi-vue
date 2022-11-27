@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_26_203215) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
   create_table "bills", force: :cascade do |t|
     t.integer "amount", precision: 38
     t.datetime "created_at", null: false
@@ -123,6 +123,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_26_203215) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "bill_id", precision: 38
+    t.integer "status", precision: 38, default: 0
     t.index ["bill_id"], name: "index_products_on_bill_id"
     t.index ["order_id"], name: "index_products_on_order_id"
     t.index ["recipe_id"], name: "index_products_on_recipe_id"
