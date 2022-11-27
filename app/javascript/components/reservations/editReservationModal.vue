@@ -27,6 +27,14 @@
   const isOpen = ref(false);
   const selectedClient = ref(findSelectedClient());
   const selectedTable = ref(null);
+  const statuses = reactive([
+    {value: 'active', label: t('reservations.statuses.active')},
+    {value: 'finished', label: t('reservations.statuses.finished')},
+    {value: 'cancelled', label: t('reservations.statuses.cancelled')},
+    {value: 'filed', label: t('reservations.statuses.filed')},
+    {value: 'scheduled', label: t('reservations.statuses.scheduled')},
+  ]);
+  const selectedStatus = ref(statuses[0]);
 
   function findSelectedClient(){
     return props.clients.find(client => client === props.reservation.client_id);
@@ -81,6 +89,11 @@
             type="datetime-local"
             :value="formatDate(reservation.reservation_datetime)"
             :label="$t('reservations.new.reservation_datetime')"
+          />
+          <Select
+            v-model="selectedStatus"
+            :options="statuses"
+            :label="$t('reservations.new.status')"
           />
           <input
             type="hidden"

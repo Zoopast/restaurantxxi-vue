@@ -32,7 +32,7 @@ class Api::V1::ReservationsController < ApplicationController
       if params[:reservation][:status] == 'finished'
         transaction = Transaction.new transaction_type: 'income', date: Time.now
         if transaction.save
-          bill = Bill.new amount: @reservation.order.total, client_id: @reservation.client_id, transaction_id: transaction.id
+          bill = Bill.new amount: @reservation.order.calculate_total, client_id: @reservation.client_id, transaction_id: transaction.id
           if bill.save
             render json: @reservation
           else

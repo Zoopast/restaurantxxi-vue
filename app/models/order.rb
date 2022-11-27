@@ -11,13 +11,21 @@
 #  updated_at     :datetime         not null
 #
 class Order < ApplicationRecord
-
-  def total
-    products.sum(:price)
-  end
-
   belongs_to :client
   has_many :products
   belongs_to :reservation
   belongs_to :table
+
+  def calculate_total
+    if self.total.nil?
+      total = 0
+      products.each do |product|
+        total += product.recipe.price
+      end
+      self.update! total: total
+      total
+    else
+      self.total
+    end
+  end
 end
