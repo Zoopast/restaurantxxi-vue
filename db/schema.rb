@@ -12,11 +12,11 @@
 
 ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
   create_table "bills", force: :cascade do |t|
-    t.integer "amount", precision: 38
+    t.integer "amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "client_id", precision: 38, null: false
-    t.integer "transaction_id", precision: 38, null: false
+    t.integer "client_id", null: false
+    t.integer "transaction_id", null: false
     t.index ["client_id"], name: "index_bills_on_client_id"
     t.index ["transaction_id"], name: "index_bills_on_transaction_id"
   end
@@ -37,16 +37,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
 
   create_table "expense_items", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "price", precision: 38, null: false
-    t.integer "quantity", precision: 38, null: false
+    t.integer "price", null: false
+    t.integer "quantity", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expense_id", precision: 38, null: false
+    t.integer "expense_id", null: false
     t.index ["expense_id"], name: "index_expense_items_on_expense_id"
   end
 
   create_table "expenses", force: :cascade do |t|
-    t.integer "amount", precision: 38, null: false
+    t.integer "amount", null: false
     t.string "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
     t.string "unit", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "recipe_id", precision: 38, null: false
+    t.integer "recipe_id", null: false
     t.index ["recipe_id"], name: "index_ingredients_on_recipe_id"
   end
 
@@ -74,12 +74,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
-    t.integer "price", precision: 38
-    t.integer "stock", precision: 38
+    t.integer "price"
+    t.integer "stock"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "inventory_id", precision: 38, null: false
-    t.integer "kitchen_id", precision: 38
+    t.integer "inventory_id", null: false
+    t.integer "kitchen_id"
     t.index ["inventory_id"], name: "index_items_on_inventory_id"
     t.index ["kitchen_id"], name: "index_items_on_kitchen_id"
   end
@@ -106,10 +106,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "total", precision: 38
-    t.integer "client_id", precision: 38, null: false
-    t.integer "table_id", precision: 38, null: false
-    t.integer "reservation_id", precision: 38, null: false
+    t.integer "total"
+    t.integer "client_id", null: false
+    t.integer "table_id", null: false
+    t.integer "reservation_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
@@ -118,12 +118,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "order_id", precision: 38, null: false
-    t.integer "recipe_id", precision: 38, null: false
+    t.integer "order_id", null: false
+    t.integer "recipe_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "bill_id", precision: 38
-    t.integer "status", precision: 38, default: 0
+    t.integer "bill_id"
+    t.integer "status", default: 0
     t.index ["bill_id"], name: "index_products_on_bill_id"
     t.index ["order_id"], name: "index_products_on_order_id"
     t.index ["recipe_id"], name: "index_products_on_recipe_id"
@@ -134,22 +134,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
     t.text "preparation", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "menu_id", precision: 38, null: false
-    t.integer "kitchen_id", precision: 38
+    t.integer "menu_id", null: false
+    t.integer "kitchen_id"
     t.string "description"
-    t.integer "price", precision: 38, default: 0, null: false
+    t.integer "price", default: 0, null: false
     t.index ["kitchen_id"], name: "index_recipes_on_kitchen_id"
     t.index ["menu_id"], name: "index_recipes_on_menu_id"
   end
 
   create_table "reservations", force: :cascade do |t|
     t.datetime "reservation_datetime"
-    t.integer "status", precision: 38
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "number_of_people", precision: 38, null: false
-    t.integer "client_id", precision: 38, null: false
-    t.integer "table_id", precision: 38, null: false
+    t.integer "number_of_people", null: false
+    t.integer "client_id", null: false
+    t.integer "table_id", null: false
     t.index ["client_id"], name: "index_reservations_on_client_id"
     t.index ["table_id"], name: "index_reservations_on_table_id"
   end
@@ -157,7 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
-    t.integer "resource_id", precision: 38
+    t.integer "resource_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
@@ -167,21 +167,21 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
 
   create_table "tables", force: :cascade do |t|
     t.datetime "reserved_at"
-    t.integer "seats", precision: 38
-    t.integer "table_number", precision: 38
+    t.integer "seats"
+    t.integer "table_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "transactions", force: :cascade do |t|
-    t.datetime "date", default: "2022-11-26 20:32:33", null: false
-    t.integer "transaction_type", precision: 38, null: false
+    t.datetime "date", default: "2023-04-27 15:49:32", null: false
+    t.integer "transaction_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "units", force: :cascade do |t|
-    t.integer "measurement", precision: 38
+    t.integer "measurement"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -200,8 +200,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_27_002238) do
   end
 
   create_table "users_roles", id: false, force: :cascade do |t|
-    t.integer "user_id", precision: 38
-    t.integer "role_id", precision: 38
+    t.integer "user_id"
+    t.integer "role_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
