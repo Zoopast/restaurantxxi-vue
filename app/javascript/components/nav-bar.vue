@@ -52,49 +52,43 @@
     </div>
     <div class="">
       <a
-        v-if="userHasRole(['admin', 'storage'])"
         href="/items" class="p-2 nav-item"
       >
         {{t('inventory.title')}}
       </a>
       <a
-        v-if="userHasRole(['admin', 'kitchen'])"
         href="/menus" class="p-2 nav-item"
       >
         {{t('menus.title')}}
       </a>
       <a
-        v-if="userHasRole(['admin', 'kitchen'])"
         href="/recipes" class="p-2 nav-item"
       >
         {{t('recipes.title')}}
       </a>
       <a
-        v-if="userHasRole(['admin', 'kitchen'])"
         href="/kitchens" class="p-2 nav-item"
       >
         {{t('orders.title')}}
       </a>
       <a
-        v-if="userHasRole(['admin'])"
+        
         href="/tables" class="p-2 nav-item"
       >
         {{t('tables.title')}}
       </a>
       <a
-        v-if="userHasRole(['admin'])"
+        
         href="/customers" class="p-2 nav-item"
       >
         {{t('clients.title')}}
       </a>
       <a
-        v-if="userHasRole(['admin', 'waiter'])"
         href="/reservations" class="p-2 nav-item"
       >
         {{t('reservations.title')}}
       </a>
       <a
-        v-if="userHasRole(['admin', 'finance'])"
         href="/finances" class="p-2 nav-item"
       >
         {{t('finances.title')}}
